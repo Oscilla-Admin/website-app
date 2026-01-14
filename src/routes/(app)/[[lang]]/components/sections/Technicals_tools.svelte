@@ -12,5 +12,12 @@
         {#snippet children(tool)}
             <CarouselCard title={tool.title.fr} iconName={tool.iconName} />
         {/snippet}
+        {#snippet popupContent(tool)}
+            <div>
+                <img src={tool.image} alt={tool.title.fr} />
+                <p>{tool.description.fr}</p>
+                                               
+            </div>
+        {/snippet}
     </Carousel>
 </div>

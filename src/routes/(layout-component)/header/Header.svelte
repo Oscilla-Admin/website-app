@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Logo from "../Logo.svelte";
+	import Logo from "$lib/components/Logo.svelte";
 	import NavBar from "./components/NavBar.svelte";
     
     // État pour savoir si on a scrollé
