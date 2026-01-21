@@ -17,6 +17,5 @@
 	<ActivitiesAndProjects activities={data.activities} />
 	<TechnicalsTools technicalTools={data.technicalTools} />
 	<Contacts />
-
 </div>
 

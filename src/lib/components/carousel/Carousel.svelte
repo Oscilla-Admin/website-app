@@ -36,7 +36,6 @@
             <button 
                 class="snap-start flex-none w-[85%] md:w-[45%] lg:w-[30%] text-left" 
                 onclick={() => { handlePopup(item) }}
-                  
                 type="button"
             >
                 {@render children(item)}

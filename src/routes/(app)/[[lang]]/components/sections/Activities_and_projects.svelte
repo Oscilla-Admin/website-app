@@ -13,8 +13,8 @@
 
 </script>
 
-<div class="flex flex-col items-center justify-center w-full p-8 gap-4 container mx-auto">
-    <h2 class="text-4xl font-bold">Activités et Projets</h2>
+<div id="activites-projets" class="flex flex-col items-center justify-center w-full py-16 px-8 gap-4 container mx-auto scroll-mt-24">
+    <h2 class="text-4xl font-bold mb-8">Activités et Projets</h2>
     <Carousel items={activities}>
         {#snippet children(activity)}
             <CarouselCard title={activity.title.fr} iconName={activity.iconName}  />
@@ -31,10 +31,11 @@
                         <h4 class="text-xl font-semibold mb-4">Projets associés</h4>
                         <Carousel items={getProjectsByActivity(activity.id)}>
                             {#snippet children(project)}
-                                <CarouselCard 
-                                    title={project.name.fr} 
+                                <CarouselCard
+                                    title={project.name.fr}
                                     description={project.description.fr}
                                     image={project.image}
+                                    href={`/project/${project.id}`}
                                 />
                             {/snippet}
                         </Carousel>

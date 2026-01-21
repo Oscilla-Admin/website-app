@@ -5,17 +5,17 @@
 	
 </script>
 
-<div class="flex flex-row items-center justify-end gap-2 w-full">
-	<nav class="flex flex-row items-center justify-around gap-2 w-full">
-		<Button onClick={() => {}} label="Accueil" />
-		<Button onClick={() => {}} label="A propos de nous" />
-		<Button onClick={() => {}} label="Activités et Projets" />
-		<Button onClick={() => {}} label="Moyens techniques" />
-		<Button onClick={() => {}} label="Contact" />
+<div class="flex flex-row items-center w-full gap-4">
+	<nav class="flex flex-row items-center justify-end flex-7 md:gap-20 ml-14">
+		<Button href="#accueil" label="Accueil" />
+		<Button href="#a-propos" label="A propos de nous" />
+		<Button href="#activites-projets" label="Activités et Projets" />
+		<Button href="#moyens-techniques" label="Moyens techniques" />
+		<Button href="#contact" label="Contact" />
 	</nav>
-	<div class="flex flex-row items-center justify-around gap-2 w-40 ">
-	   <LinkIcon href="" icon={Mail} />
-	   <LinkIcon href="" icon={Linkedin} />
+	<div class="flex flex-row items-center justify-end gap-2 flex-1">
+		<LinkIcon href="" icon={Mail} />
+		<LinkIcon href="" icon={Linkedin} />
 	</div>
 </div>
 

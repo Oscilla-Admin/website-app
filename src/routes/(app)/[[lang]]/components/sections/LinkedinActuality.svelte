@@ -9,7 +9,7 @@
     });
 </script>
 
-<section class="py-16 bg-[var(--bg-color)] w-full" style="--bg-color: {COLORS.grayLight};">
+<section class="py-16 bg-[var(--bg-color)] w-full scroll-mt-24" style="--bg-color: {COLORS.grayLight};">
     <div class="container mx-auto px-4 text-center">
         <h2 class="text-4xl font-bold mb-12">Actualités</h2>
         

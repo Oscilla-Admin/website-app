@@ -6,8 +6,8 @@ let isOpen = $state(false);
 
 </script>
 
-<div class="flex flex-col items-center justify-center w-full p-8 gap-4 container mx-auto">
-    <h2 class="text-4xl font-bold">A propos de nous</h2>
+<div id="a-propos" class="flex flex-col items-center justify-center w-full py-16 px-8 gap-4 container mx-auto scroll-mt-24">
+    <h2 class="text-4xl font-bold mb-8">A propos de nous</h2>
     <p class="text-lg">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
     <div class="flex flex-col items-center justify-center w-full gap-4">
         <Button onClick={() => { isOpen = !isOpen }} label="Voir plus +" />
