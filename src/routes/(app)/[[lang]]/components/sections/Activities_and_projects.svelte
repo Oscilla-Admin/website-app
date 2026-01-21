@@ -3,9 +3,13 @@
 	import Carousel from "$lib/components/carousel/Carousel.svelte";
 	import CarouselCard from "$lib/components/carousel/components/CarouselCard.svelte";
 	import { projects, type Project } from "$lib/data/projects";
+	import { getLocale } from '$paraglide/runtime.js';
+	import * as m from '$paraglide/messages.js';
 
     let { activities }: { activities: Activity[] } = $props();
-   
+
+    const locale = getLocale();
+
     // Fonction helper pour récupérer les projets d'une activité
     const getProjectsByActivity = (activityId: string): Project[] => {
         return projects.filter((project) => project.activityId === activityId);
@@ -14,26 +18,26 @@
 </script>
 
 <div id="activites-projets" class="flex flex-col items-center justify-center w-full py-16 px-8 gap-4 container mx-auto scroll-mt-24">
-    <h2 class="text-4xl font-bold mb-8">Activités et Projets</h2>
+    <h2 class="text-4xl font-bold mb-8">{m.activities_title()}</h2>
     <Carousel items={activities}>
         {#snippet children(activity)}
-            <CarouselCard title={activity.title.fr} iconName={activity.iconName}  />
+            <CarouselCard title={activity.title[locale]} iconName={activity.iconName}  />
         {/snippet}
         {#snippet popupContent(activity)}
             <div class="space-y-6">
                 <div>
-                    <h3 class="text-2xl font-bold mb-3">{activity.title.fr}</h3>
-                    <p class="text-gray-600">{activity.description.fr}</p>
+                    <h3 class="text-2xl font-bold mb-3">{activity.title[locale]}</h3>
+                    <p class="text-gray-600">{activity.description[locale]}</p>
                 </div>
-                
+
                 {#if getProjectsByActivity(activity.id).length > 0}
                     <div>
-                        <h4 class="text-xl font-semibold mb-4">Projets associés</h4>
+                        <h4 class="text-xl font-semibold mb-4">{m.activities_related_projects()}</h4>
                         <Carousel items={getProjectsByActivity(activity.id)}>
                             {#snippet children(project)}
                                 <CarouselCard
-                                    title={project.name.fr}
-                                    description={project.description.fr}
+                                    title={project.name[locale]}
+                                    description={project.description[locale]}
                                     image={project.image}
                                     href={`/project/${project.id}`}
                                 />

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { COLORS } from '$lib/utils/colors';
     import { Waves, HandMetal, Briefcase } from 'lucide-svelte';
 
     const icons = { Waves, HandMetal, Briefcase };
@@ -37,7 +38,7 @@
 
     <!-- Zone Contenu -->
     <div class="p-6 flex-1 flex flex-col">
-        <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+        <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-[var(--hover-color)] transition-colors" style="--hover-color: {COLORS.primary}">
             {title}
         </h3>
 

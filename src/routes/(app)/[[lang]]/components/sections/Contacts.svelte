@@ -2,6 +2,7 @@
 	import { COLORS } from "$lib/utils/colors";
 	import { onMount } from "svelte";
 	import { getContactEmail } from "../function";
+	import * as m from '$paraglide/messages.js';
 
 	let contactEmail = $state('');
 	let isLoading = $state(true);
@@ -19,9 +20,9 @@
 </script>
 
 <section id="contact" class="flex flex-col items-center justify-center w-full py-16 px-8 gap-6 container mx-auto scroll-mt-24">
-	<h2 class="text-4xl font-bold mb-8">Nous contacter</h2>
+	<h2 class="text-4xl font-bold mb-8">{m.contact_title()}</h2>
 	<p class="text-lg text-center max-w-2xl">
-		Vous avez un projet acoustique ? Une question ? N'hésitez pas à nous contacter.
+		{m.contact_description()}
 	</p>
 
 	<button
@@ -31,9 +32,9 @@
 		style="background-color: {COLORS.primary};"
 	>
 		{#if isLoading}
-			Chargement...
+			{m.contact_loading()}
 		{:else}
-			Nous envoyer un email
+			{m.contact_send_email()}
 		{/if}
 	</button>
 </section>

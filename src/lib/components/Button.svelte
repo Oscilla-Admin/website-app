@@ -14,7 +14,7 @@
 {:else}
 <button
     onclick={onClick}
-    class="text-black px-3 py-2 md:min-w-40 rounded-md hover:cursor-pointer transition-colors hover:text-[var(--hover-color)] whitespace-nowrap"
+    class="text-black text-xl font-bold px-3 py-2 md:min-w-40 hover:cursor-pointer transition-colors hover:text-[var(--hover-color)] whitespace-nowrap"
     style="--hover-color: {COLORS.primary}"
 >
     {label}

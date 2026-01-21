@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { COLORS } from '$lib/utils/colors';
+	import { m } from '$paraglide/messages';
 
     // Si tu as besoin d'un script externe (souvent le cas pour les widgets)
     import { onMount } from 'svelte';
@@ -11,7 +12,7 @@
 
 <section class="py-16 bg-[var(--bg-color)] w-full scroll-mt-24" style="--bg-color: {COLORS.grayLight};">
     <div class="container mx-auto px-4 text-center">
-        <h2 class="text-4xl font-bold mb-12">Actualités</h2>
+        <h2 class="text-4xl font-bold mb-12">{m.linkedin_actualities_title()}</h2>
         
         <div class="flex justify-center items-center min-h-[300px] bg-white rounded-xl shadow-sm p-4 w-3/4 mx-auto border border-gray-100">
             <!-- PLACEHOLDER POUR LE WIDGET -->

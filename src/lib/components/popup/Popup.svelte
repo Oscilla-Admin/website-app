@@ -38,7 +38,7 @@
         }}
     >
         <div 
-            class="bg-white p-8 rounded-2xl shadow-2xl max-w-2xl w-full relative animate-in fade-in zoom-in-95 duration-200 cursor-default"
+            class="bg-white p-8 rounded-2xl shadow-2xl max-w-[80%] w-full relative animate-in fade-in zoom-in-95 duration-200 cursor-default"
             onclick={(e) => e.stopPropagation()}
             role="dialog"
             aria-modal="true"
