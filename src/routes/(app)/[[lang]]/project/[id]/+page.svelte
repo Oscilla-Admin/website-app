@@ -26,7 +26,7 @@
 
 		<!-- Bouton retour -->
 		<a
-			href="/#projects"
+			href="/#activites-references"
 			class="absolute top-6 left-6 flex items-center gap-2 text-white bg-black/30 hover:bg-black/50 px-4 py-2 rounded-md transition-colors"
 		>
 			<ArrowLeft size={20} />

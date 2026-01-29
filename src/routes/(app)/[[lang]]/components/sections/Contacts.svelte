@@ -19,7 +19,7 @@
 	}
 </script>
 
-<section id="contact" class="flex flex-col items-center justify-center w-full py-16 px-8 gap-6 container mx-auto scroll-mt-24">
+<section id="contact" class="flex flex-col items-center justify-center w-full py-16 px-8 gap-6 container mx-auto scroll-mt-32">
 	<h2 class="text-4xl font-bold mb-8">{m.contact_title()}</h2>
 	<p class="text-lg text-center max-w-2xl">
 		{m.contact_description()}
@@ -28,8 +28,9 @@
 	<button
 		onclick={openMailto}
 		disabled={isLoading || !contactEmail}
-		class="p-4 px-8 rounded-md text-white font-medium transition-opacity hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
+		class="p-4 px-8 rounded-md text-white font-medium transition-opacity hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed hover:cursor-pointer"
 		style="background-color: {COLORS.primary};"
+
 	>
 		{#if isLoading}
 			{m.contact_loading()}

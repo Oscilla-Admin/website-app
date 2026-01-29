@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { COLORS } from "$lib/utils/colors";
-    let { onClick, label = '', href }: { onClick?: () => void, label: string, href?: string } = $props();
+    let { onClick, label = '', href, classOverride }: { onClick?: () => void, label: string, href?: string, classOverride?: string } = $props();
 </script>
 
 {#if href}
 <a
     {href}
-    class="text-black px-3 py-2 md:min-w-40 rounded-md hover:cursor-pointer transition-colors hover:text-[var(--hover-color)] whitespace-nowrap"
+    class="text-black px-3 py-2 md:min-w-40 rounded-md hover:cursor-pointer transition-colors hover:text-[var(--hover-color)] whitespace-nowrap {classOverride}"
     style="--hover-color: {COLORS.primary}"
 >
     {label}
@@ -14,7 +14,7 @@
 {:else}
 <button
     onclick={onClick}
-    class="text-black text-xl font-bold px-3 py-2 md:min-w-40 hover:cursor-pointer transition-colors hover:text-[var(--hover-color)] whitespace-nowrap"
+    class="text-black text-xl font-bold px-3 py-2 md:min-w-40 hover:cursor-pointer transition-colors hover:text-[var(--hover-color)] whitespace-nowrap {classOverride}"
     style="--hover-color: {COLORS.primary}"
 >
     {label}

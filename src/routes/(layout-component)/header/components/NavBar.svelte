@@ -10,8 +10,8 @@
 	<nav class="flex flex-row items-center justify-end flex-7 md:gap-20 ml-14">
 		<Button href="#accueil" label={m.nav_home()} />
 		<Button href="#a-propos" label={m.nav_about()} />
-		<Button href="#activites-projets" label={m.nav_activities()} />
-		<Button href="#moyens-techniques" label={m.nav_technical()} />
+		<Button href="#activites-references" label={m.nav_activities()} />
+		<Button href="#outils-techniques" label={m.nav_technical()} />
 		<Button href="#contact" label={m.nav_contact()} />
 	</nav>
 	<div class="flex flex-row items-center justify-end gap-2 flex-1">

@@ -6,7 +6,7 @@ let isOpen = $state(false);
 
 </script>
 
-<div id="a-propos" class="flex flex-col items-center justify-center w-full py-16 px-8 gap-4 container mx-auto scroll-mt-24">
+<div id="a-propos" class="flex flex-col items-center justify-center w-full py-16 px-8 gap-4 container mx-auto scroll-mt-32">
     <h2 class="text-4xl font-bold mb-8">{m.about_title()}</h2>
     <p class="text-lg">{m.about_description()}</p>
     <div class="flex flex-col items-center justify-center w-full gap-4">

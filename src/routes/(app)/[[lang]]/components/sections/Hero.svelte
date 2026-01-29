@@ -19,7 +19,7 @@
 	style="background-image: url('/hero_bg.png'); opacity: {opacity};"
 >
 	<div class="flex flex-col items-center justify-center w-full h-full pt-40 pb-8">
-		<h1 class="text-4xl font-bold"><Logo src="/tempLogo.png" alt="Oscilla Logo" size="w-100 h-100" /></h1>
+		<h1 class="text-4xl font-bold"><Logo src="/tempLogo.png" alt="Oscilla Logo" size="w-150 h-150" /></h1>
 		<p class="text-2xl font-bold italic">{m.hero_tagline()}</p>
 	</div>
 </div>

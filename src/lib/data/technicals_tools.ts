@@ -11,7 +11,7 @@ export interface TechnicalTool {
 		ca: string;
 	};
 	image: string; // URL de l'image
-	iconName: string; // Pour mapper avec lucide-svelte
+// Pour mapper avec lucide-svelte
 }
 
 export const technicalTools: TechnicalTool[] = [
@@ -28,7 +28,6 @@ export const technicalTools: TechnicalTool[] = [
 			ca: 'Mesures de precisió per a l\'acústica ambiental i d\'edificis.'
 		},
 		image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=800&auto=format&fit=crop',
-		iconName: 'Gauge'
 	},
 	{
 		id: '2',
@@ -43,7 +42,6 @@ export const technicalTools: TechnicalTool[] = [
 			ca: 'Dodecaedre per a la mesura de temps de reverberació i d\'aïllament.'
 		},
 		image: 'https://i.pinimg.com/1200x/6b/95/2f/6b952fb3c03b2e4cf2be1beea0a5b5b1.jpg',
-		iconName: 'Speaker'
 	},
 	{
 		id: '3',
@@ -58,7 +56,6 @@ export const technicalTools: TechnicalTool[] = [
 			ca: 'Generador de sorolls d\'impactes normalitzats per provar els sòls.'
 		},
 		image: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=800&auto=format&fit=crop',
-		iconName: 'Hammer'
 	},
 	{
 		id: '4',
@@ -73,7 +70,7 @@ export const technicalTools: TechnicalTool[] = [
 			ca: 'Modelatge 3D previsional (CATT-Acoustic, CadnaA).'
 		},
 		image: 'https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=800&auto=format&fit=crop',
-		iconName: 'Monitor'
+
 	},
 	{
 		id: '5',
@@ -88,7 +85,6 @@ export const technicalTools: TechnicalTool[] = [
 			ca: 'Visualització en temps real de les fonts sonores i fuites acoustiques.'
 		},
 		image: 'https://images.unsplash.com/photo-1516035053911-c4a3b9d777d9?q=80&w=800&auto=format&fit=crop',
-		iconName: 'Camera'
 	},
 	{
 		id: '6',
@@ -103,6 +99,5 @@ export const technicalTools: TechnicalTool[] = [
 			ca: 'Sensors per a l\'anàlisi de vibracions estructurals.'
 		},
 		image: 'https://images.unsplash.com/photo-1555664424-778a1e5e1b48?q=80&w=800&auto=format&fit=crop',
-		iconName: 'Activity'
 	}
 ];

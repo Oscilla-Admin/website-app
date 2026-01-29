@@ -17,7 +17,7 @@
 
 </script>
 
-<div id="activites-projets" class="flex flex-col items-center justify-center w-full py-16 px-8 gap-4 container mx-auto scroll-mt-24">
+<div id="activites-references" class="flex flex-col items-center justify-center w-full py-16 px-8 gap-4 container mx-auto scroll-mt-32">
     <h2 class="text-4xl font-bold mb-8">{m.activities_title()}</h2>
     <Carousel items={activities}>
         {#snippet children(activity)}
