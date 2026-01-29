@@ -15,18 +15,24 @@
     const handlePopup = (item: any) => {
         if (selectedItem === item) {
             // Si on clique sur l'item déjà sélectionné, on ferme
-            selectedItem = null;
-            isOpen = false;
+            handleClose();
         } else {
             // Sinon, on ouvre avec le nouvel item
             selectedItem = item;
-            isOpen = true;
+            // Un micro-délai pour forcer Svelte à voir le changement d'état après le montage
+            // et déclencher la transition d'ouverture (fade/scale)
+            setTimeout(() => {
+                isOpen = true;
+            }, 30);
         }
     }
     
     const handleClose = () => {
-        selectedItem = null;
         isOpen = false;
+        // On ne met pas selectedItem à null tout de suite pour laisser la transition de fermeture se faire avec les données
+        setTimeout(() => {
+            if (!isOpen) selectedItem = null;
+        }, 600); // Correspond à la durée la plus longue de transition (fade: 600ms)
     }
 </script>
 
@@ -50,7 +56,7 @@
 
 {#if selectedItem}
     <Popup 
-        title={selectedItem.title?.fr || "Détails"} 
+        title={selectedItem.title?.fr || selectedItem.name?.fr || "Détails"} 
         isOpen={isOpen} 
         onClose={handleClose}
     >

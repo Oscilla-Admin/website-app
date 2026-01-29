@@ -10,6 +10,7 @@ export interface TechnicalTool {
 		en: string;
 		ca: string;
 	};
+	image: string; // URL de l'image
 	iconName: string; // Pour mapper avec lucide-svelte
 }
 
@@ -26,7 +27,8 @@ export const technicalTools: TechnicalTool[] = [
 			en: 'Precision measurements for environmental and building acoustics.',
 			ca: 'Mesures de precisió per a l\'acústica ambiental i d\'edificis.'
 		},
-		iconName: 'Gauge' // Lucide: Gauge
+		image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=800&auto=format&fit=crop',
+		iconName: 'Gauge'
 	},
 	{
 		id: '2',
@@ -40,7 +42,8 @@ export const technicalTools: TechnicalTool[] = [
 			en: 'Dodecahedron for reverberation time and insulation measurement.',
 			ca: 'Dodecaedre per a la mesura de temps de reverberació i d\'aïllament.'
 		},
-		iconName: 'Speaker' // Lucide: Speaker
+		image: 'https://i.pinimg.com/1200x/6b/95/2f/6b952fb3c03b2e4cf2be1beea0a5b5b1.jpg',
+		iconName: 'Speaker'
 	},
 	{
 		id: '3',
@@ -54,7 +57,8 @@ export const technicalTools: TechnicalTool[] = [
 			en: 'Standardized impact noise generator for floor testing.',
 			ca: 'Generador de sorolls d\'impactes normalitzats per provar els sòls.'
 		},
-		iconName: 'Hammer' // Lucide: Hammer
+		image: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=800&auto=format&fit=crop',
+		iconName: 'Hammer'
 	},
 	{
 		id: '4',
@@ -68,7 +72,8 @@ export const technicalTools: TechnicalTool[] = [
 			en: 'Predictive 3D modeling (CATT-Acoustic, CadnaA).',
 			ca: 'Modelatge 3D previsional (CATT-Acoustic, CadnaA).'
 		},
-		iconName: 'Monitor' // Lucide: Monitor
+		image: 'https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=800&auto=format&fit=crop',
+		iconName: 'Monitor'
 	},
 	{
 		id: '5',
@@ -80,9 +85,10 @@ export const technicalTools: TechnicalTool[] = [
 		description: {
 			fr: 'Visualisation en temps réel des sources sonores et fuites acoustiques.',
 			en: 'Real-time visualization of sound sources and acoustic leaks.',
-			ca: 'Visualització en temps real de les fonts sonores i fuites acústiques.'
+			ca: 'Visualització en temps real de les fonts sonores i fuites acoustiques.'
 		},
-		iconName: 'Camera' // Lucide: Camera
+		image: 'https://images.unsplash.com/photo-1516035053911-c4a3b9d777d9?q=80&w=800&auto=format&fit=crop',
+		iconName: 'Camera'
 	},
 	{
 		id: '6',
@@ -96,6 +102,7 @@ export const technicalTools: TechnicalTool[] = [
 			en: 'Sensors for structural vibration analysis.',
 			ca: 'Sensors per a l\'anàlisi de vibracions estructurals.'
 		},
-		iconName: 'Activity' // Lucide: Activity
+		image: 'https://images.unsplash.com/photo-1555664424-778a1e5e1b48?q=80&w=800&auto=format&fit=crop',
+		iconName: 'Activity'
 	}
 ];

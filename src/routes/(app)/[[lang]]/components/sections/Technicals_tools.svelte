@@ -14,12 +14,19 @@
     <h2 class="text-4xl font-bold mb-8">{m.technical_title()}</h2>
     <Carousel items={technicalTools}>
         {#snippet children(tool)}
-            <CarouselCard title={tool.title[locale]} iconName={tool.iconName} />
+            <CarouselCard title={tool.title[locale]} iconName={tool.iconName} image={tool.image} />
         {/snippet}
         {#snippet popupContent(tool)}
-            <div>
-                <img src={tool.image} alt={tool.title[locale]} />
-                <p>{tool.description[locale]}</p>
+            <div class="space-y-6">
+                {#if tool.image}
+                    <div class="w-full h-64 overflow-hidden rounded-xl">
+                        <img src={tool.image} alt={tool.title[locale]} class="w-full h-full object-cover" />
+                    </div>
+                {/if}
+                <div>
+                    <h3 class="text-2xl font-bold mb-3">{tool.title[locale]}</h3>
+                    <p class="text-gray-600">{tool.description[locale]}</p>
+                </div>
             </div>
         {/snippet}
     </Carousel>

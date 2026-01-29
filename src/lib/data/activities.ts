@@ -1,4 +1,4 @@
-import { HandMetal, Waves, Briefcase } from 'lucide-svelte';
+import { HandMetal, Waves, Briefcase, Factory, Music, Activity as ActivityIcon, FileCheck } from 'lucide-svelte';
 
 export interface Activity {
 	id: string;
@@ -12,7 +12,7 @@ export interface Activity {
 		en: string;
 		ca: string;
 	};
-	iconName: string; // Lucide Icon Component
+	image: string; // URL de l'image
 }
 
 export const activities: Activity[] = [
@@ -28,7 +28,7 @@ export const activities: Activity[] = [
 			en: 'In situ measurements and simulations to optimize the sound quality of your spaces.',
 			ca: 'Mesures in situ i simulacions per optimitzar la qualitat sonora dels vostres espais.'
 		},
-		iconName: 'Waves'
+		image: 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?q=80&w=800&auto=format&fit=crop'
 	},
 	{
 		id: '2',
@@ -42,7 +42,7 @@ export const activities: Activity[] = [
 			en: 'Technical solutions to limit noise propagation between rooms.',
 			ca: 'Solucions tècniques per limitar la propagació del soroll entre locals.'
 		},
-		iconName: 'HandMetal'
+		image: 'https://images.unsplash.com/photo-1519834785169-98be25ec3f84?q=80&w=800&auto=format&fit=crop'
 	},
 	{
 		id: '3',
@@ -56,7 +56,7 @@ export const activities: Activity[] = [
 			en: 'Tailor-made support for architects, companies and individuals.',
 			ca: 'Acompanyament a mida per a arquitectes, empreses i particulars.'
 		},
-		iconName: 'Briefcase'	
+		image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800&auto=format&fit=crop'
 	},
 	{
 		id: '4',
@@ -70,7 +70,7 @@ export const activities: Activity[] = [
 			en: 'Machine noise reduction and worker protection.',
 			ca: 'Reducció del soroll de màquines i protecció dels treballadors.'
 		},
-		iconName: 'Factory' // Pense à l'importer dans ton mapping
+		image: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=800&auto=format&fit=crop'
 	},
 	{
 		id: '5',
@@ -84,7 +84,7 @@ export const activities: Activity[] = [
 			en: 'Creation of soundscapes for commercial spaces and museums.',
 			ca: 'Creació d\'ambients sonors per a espais comercials i museus.'
 		},
-		iconName: 'Music' // Pense à l'importer dans ton mapping
+		image: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=800&auto=format&fit=crop'
 	},
 	{
 		id: '6',
@@ -98,7 +98,7 @@ export const activities: Activity[] = [
 			en: 'Diagnosis and treatment of structural vibrations in buildings.',
 			ca: 'Diagnòstic i tractament de vibracions estructurals d\'edificis.'
 		},
-		iconName: 'Activity' // Pense à l'importer dans ton mapping
+		image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop'
 	},
 	{
 		id: '7',
@@ -112,6 +112,6 @@ export const activities: Activity[] = [
 			en: 'Support for obtaining labels (HQE, BREEAM) and compliance.',
 			ca: 'Acompanyament per a l\'obtenció de segells (HQE, BREEAM) i conformitat.'
 		},
-		iconName: 'FileCheck' // Pense à l'importer dans ton mapping
+		image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=800&auto=format&fit=crop'
 	}
 ];

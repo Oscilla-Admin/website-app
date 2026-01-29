@@ -21,10 +21,15 @@
     <h2 class="text-4xl font-bold mb-8">{m.activities_title()}</h2>
     <Carousel items={activities}>
         {#snippet children(activity)}
-            <CarouselCard title={activity.title[locale]} iconName={activity.iconName}  />
+            <CarouselCard title={activity.title[locale]} iconName={activity.iconName} image={activity.image} />
         {/snippet}
         {#snippet popupContent(activity)}
             <div class="space-y-6">
+                {#if activity.image}
+                    <div class="w-full h-64 overflow-hidden rounded-xl">
+                        <img src={activity.image} alt={activity.title[locale]} class="w-full h-full object-cover" />
+                    </div>
+                {/if}
                 <div>
                     <h3 class="text-2xl font-bold mb-3">{activity.title[locale]}</h3>
                     <p class="text-gray-600">{activity.description[locale]}</p>

@@ -57,7 +57,7 @@ export const projects: Project[] = [
 			en: 'Improvement of sound comfort in a 2000m² workspace. Installation of absorbent panels and optimization of space distribution.',
 			ca: 'Millora del confort sonor en un espai de treball de 2000m². Instal·lació de panells absorbents i optimització de la distribució d\'espais.'
 		},
-		image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop',
+		image: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=800&auto=format&fit=crop',
 		activityId: '3' // Conseil & Expertise
 	},
 	{

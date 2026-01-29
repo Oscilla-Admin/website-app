@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { COLORS } from '$lib/utils/colors';
-    import { Waves, HandMetal, Briefcase } from 'lucide-svelte';
+    import { Waves, HandMetal, Briefcase, Factory, Music, Activity, FileCheck, Gauge, Speaker, Hammer, Monitor, Camera } from 'lucide-svelte';
 
-    const icons = { Waves, HandMetal, Briefcase };
+    const icons = { Waves, HandMetal, Briefcase, Factory, Music, Activity, FileCheck, Gauge, Speaker, Hammer, Monitor, Camera };
 
     let {
         title = '',
