@@ -2,13 +2,13 @@
 	import { onMount } from 'svelte';
 	import { drawSoundWave, type WaveOptions } from '$lib/utils/waves';
 
-	let canvas: HTMLCanvasElement = $state();
+	let canvas: HTMLCanvasElement; // Plus de $state ici pour éviter les conflits au build
 	let scrollY = $state(0);
 	let currentIntensity = $state(0);
 
 	const options: WaveOptions = {
-		lines: 4, // Réduit de 5 à 4
-		points: 80, // Réduit de 120 à 80
+		lines: 4,
+		points: 80,
 		lineWidth: 1.5,
 		baseAlpha: 0.3,
 		baseAmplitude: 20,
@@ -21,7 +21,7 @@
 
 	onMount(() => {
 		if (!canvas) return;
-		const ctx = canvas.getContext('2d');
+		const ctx = canvas.getContext('2d', { alpha: true });
 		if (!ctx) return;
 
 		let animationFrame: number;

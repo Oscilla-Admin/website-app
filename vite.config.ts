@@ -4,8 +4,18 @@ import { defineConfig } from 'vitest/config';
 import { sveltekit } from '@sveltejs/kit/vite';
 
 export default defineConfig({
-	plugins: [paraglideVitePlugin({ project: './project.inlang', outdir: './src/paraglide' }),tailwindcss(), sveltekit()],
-
+	plugins: [
+		paraglideVitePlugin({ project: './project.inlang', outdir: './src/paraglide' }),
+		tailwindcss(), 
+		sveltekit()
+	],
+	ssr: {
+		noExternal: ['lucide-svelte']
+	},
+	build: {
+		target: 'esnext',
+		sourcemap: false
+	},
 	test: {
 		expect: { requireAssertions: true },
 

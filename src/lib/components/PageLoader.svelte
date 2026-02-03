@@ -3,12 +3,12 @@
 	import { drawSoundWave, type WaveOptions } from '$lib/utils/waves';
 	import * as m from '$paraglide/messages.js';
 
-	let canvas: HTMLCanvasElement = $state();
+	let canvas: HTMLCanvasElement; // Plus de $state ici
 	let { active = false } = $props();
 
 	const options: WaveOptions = {
-		lines: 6, // Réduit de 8 à 6
-		points: 80, // Réduit de 100 à 80
+		lines: 6,
+		points: 80,
 		lineWidth: 2,
 		baseAlpha: 0.6,
 		baseAmplitude: 80,
@@ -22,7 +22,7 @@
 	$effect(() => {
 		if (!active || !canvas) return;
 		
-		const ctx = canvas.getContext('2d');
+		const ctx = canvas.getContext('2d', { alpha: true });
 		if (!ctx) return;
 
 		let animationFrame: number;
