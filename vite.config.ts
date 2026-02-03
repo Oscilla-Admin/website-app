@@ -10,11 +10,17 @@ export default defineConfig({
 		sveltekit()
 	],
 	ssr: {
-		noExternal: ['lucide-svelte']
+		noExternal: ['lucide-svelte', '@inlang/paraglide-js']
 	},
+    worker: {
+        format: 'es'
+    },
 	build: {
 		target: 'esnext',
-		sourcemap: false
+		sourcemap: false,
+        rollupOptions: {
+            maxParallelFileOps: 2 // Limite la parallélisation pour éviter les blocages
+        }
 	},
 	test: {
 		expect: { requireAssertions: true },
