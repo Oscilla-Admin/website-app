@@ -3,10 +3,26 @@
 	import { ArrowLeft } from "lucide-svelte";
 	import { getLocale } from '$paraglide/runtime.js';
 	import * as m from '$paraglide/messages.js';
+	import { onMount } from "svelte";
+	import { getContactEmail } from "../../components/function";
 
 	let { data } = $props();
 
 	const locale = getLocale();
+
+	let contactEmail = $state('');
+	let isLoading = $state(true);
+
+	onMount(async () => {
+		contactEmail = await getContactEmail();
+		isLoading = false;
+	});
+
+	function openMailto() {
+		if (contactEmail) {
+			window.location.href = `mailto:${contactEmail}?subject=Contact depuis le site Oscilla - Projet ${data.project.name[locale]}`;
+		}
+	}
 </script>
 
 <svelte:head>
@@ -81,13 +97,18 @@
 			<p class="text-gray-700 mb-6">
 				{m.project_similar_description()}
 			</p>
-			<a
-				href="/#contact"
-				class="inline-block px-8 py-3 rounded-md text-white font-medium transition-opacity hover:opacity-90"
+			<button
+				onclick={openMailto}
+				disabled={isLoading || !contactEmail}
+				class="inline-block px-8 py-3 rounded-md text-white font-medium transition-opacity hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed hover:cursor-pointer"
 				style="background-color: {COLORS.primary};"
 			>
-				{m.nav_contact()}
-			</a>
+				{#if isLoading}
+					{m.contact_loading()}
+				{:else}
+					{m.contact_send_email()}
+				{/if}
+			</button>
 		</div>
 	</div>
 </div>

@@ -30,7 +30,7 @@
     {isScrolled ? 'shadow-sm' : ''}">
     
     <div class="container mx-auto px-4 flex justify-between items-center">
-        <Logo src="/tempLogo.png" alt="Oscilla Logo" href="#accueil" />
+        <Logo src="/tempLogo.png" alt="Oscilla Logo" href="/#accueil" classOverride="mb-1" />
 	    <NavBar />
     </div>
 </header>
