@@ -1,9 +1,23 @@
 <script lang="ts">
-	import { COLORS } from '$lib/utils/colors';
 	import { fade } from 'svelte/transition';
+	import { drawSoundWave, type WaveOptions } from '$lib/utils/waves';
+	import * as m from '$paraglide/messages.js';
 
 	let canvas: HTMLCanvasElement;
 	let { active = false } = $props();
+
+	const options: WaveOptions = {
+		lines: 8,
+		points: 100,
+		lineWidth: 2,
+		baseAlpha: 0.6,
+		baseAmplitude: 80,
+		amplitudeMultiplier: 40,
+		baseFrequency: Math.PI * 2,
+		frequencyMultiplier: 2,
+		baseSpeed: 0.03,
+		speedMultiplier: 0.02
+	};
 
 	$effect(() => {
 		if (!active || !canvas) return;
@@ -27,34 +41,10 @@
 			const w = window.innerWidth;
 			const h = window.innerHeight;
 
-			ctx.clearRect(0, 0, w, h);
+			// Le loader a une intensité fixe de 0.5 pour être dynamique sans scroll
+			drawSoundWave(ctx, w, h, time, 0.5, options);
 
-			const lines = 8;
-			const points = 100;
-			const spacing = w / points;
-
-			for (let i = 0; i < lines; i++) {
-				ctx.beginPath();
-				ctx.strokeStyle = COLORS.primary;
-				ctx.lineWidth = 2;
-				ctx.globalAlpha = (lines - i) / lines * 0.6;
-
-				for (let j = 0; j <= points; j++) {
-					const x = j * spacing;
-					const angle = (j / points) * Math.PI * 2;
-					
-					const wave = Math.sin(angle + time * 2 + i * 0.5);
-					const perspective = Math.cos(time + i * 0.3);
-					
-					const y = h / 2 + wave * 100 * perspective + Math.sin(time * 3 + i) * 20;
-
-					if (j === 0) ctx.moveTo(x, y);
-					else ctx.lineTo(x, y);
-				}
-				ctx.stroke();
-			}
-
-			time += 0.03;
+			time += options.baseSpeed;
 			animationFrame = requestAnimationFrame(draw);
 		};
 
@@ -70,11 +60,11 @@
 {#if active}
 	<div 
 		class="fixed inset-0 z-[9999] bg-white/60 backdrop-blur-md flex items-center justify-center pointer-events-none opacity-100"
-		transition:fade={{ duration: 400 }}
+		transition:fade={{ duration: 600 }}
 	>
 		<canvas bind:this={canvas} class="w-full h-full"></canvas>
-		<div class="absolute bottom-20 left-1/2 -translate-x-1/2 text-primary font-medium tracking-widest uppercase text-sm opacity-100">
-			Chargement...
+		<div class="absolute bottom-20 left-1/2 -translate-x-1/2 text-primary font-medium tracking-widest uppercase text-sm">
+			{m.contact_loading()}
 		</div>
 	</div>
 {/if}

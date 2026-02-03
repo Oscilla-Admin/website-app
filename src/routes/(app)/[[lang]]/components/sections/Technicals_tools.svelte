@@ -11,9 +11,9 @@
 	const locale = getLocale();
 </script>
 
-<section id="outils-techniques" class="relative py-24 w-full scroll-mt-32 overflow-hidden">
+<section id="outils-techniques" class="py-24 w-full scroll-mt-32 overflow-hidden">
+    <div class="bg-[var(--bg-color)] absolute inset-0" style="--bg-color: {COLORS.grayLight};"></div>
     <!-- Dégradés de transition pour fond enchaîné -->
-    <div class="absolute inset-0 bg-[var(--bg-color)]" style="--bg-color: {COLORS.grayLight};"></div>
     <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-white to-transparent"></div>
     <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white to-transparent"></div>
 

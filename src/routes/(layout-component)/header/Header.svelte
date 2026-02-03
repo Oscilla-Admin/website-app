@@ -25,7 +25,7 @@
 
 <svelte:window onscroll={handleScroll} />
 
-<header class="fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-out py-4
+<header class="fixed top-0 left-0 w-full z-[50] transition-all duration-300 ease-out py-4
     {isTransparent ? 'bg-transparent' : 'bg-white'}
     {isScrolled ? 'shadow-sm' : ''}">
     

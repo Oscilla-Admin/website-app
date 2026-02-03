@@ -37,6 +37,11 @@
 <svelte:head>
 	<title>{data.project.name[locale]} | Oscilla</title>
 	<meta name="description" content={data.project.description[locale]} />
+    <!-- OpenGraph -->
+    <meta property="og:title" content="{data.project.name[locale]} | Oscilla" />
+    <meta property="og:description" content={data.project.description[locale]} />
+    <meta property="og:image" content={data.project.image} />
+    <meta property="og:type" content="article" />
 </svelte:head>
 
 <PageLoader active={isLoading} />

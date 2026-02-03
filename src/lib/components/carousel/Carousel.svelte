@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { Snippet } from 'svelte';
-	import Popup from '../popup/Popup.svelte';
+	import { openPopup, closePopup } from '$lib/utils/popup';
 
     interface Props {
         items: any[];
@@ -11,43 +11,39 @@
 
     let { items, children, popupContent, initialItemId = null }: Props = $props();
     let selectedItem = $state<any>(null);
-    let isOpen = $state(false);
 
     // Ouverture automatique si initialItemId est présent
     $effect(() => {
         if (initialItemId && items.length > 0) {
             const item = items.find(i => i.id === initialItemId);
-            if (item) {
+            if (item && popupContent) {
                 selectedItem = item;
-                // Petit délai pour laisser la page charger avant d'ouvrir la popup
+                // On utilise le store global pour ouvrir la popup
                 setTimeout(() => {
-                    isOpen = true;
+                    openPopup(
+                        item.title?.fr || item.name?.fr || "Détails",
+                        popupContent,
+                        item
+                    );
                 }, 500);
+
+                // On nettoie l'URL
+                const url = new URL(window.location.href);
+                url.searchParams.delete('activity');
+                window.history.replaceState({}, '', url);
             }
         }
     });
 
     const handlePopup = (item: any) => {
-        if (selectedItem === item) {
-            // Si on clique sur l'item déjà sélectionné, on ferme
-            handleClose();
-        } else {
-            // Sinon, on ouvre avec le nouvel item
+        if (popupContent) {
             selectedItem = item;
-            // Un micro-délai pour forcer Svelte à voir le changement d'état après le montage
-            // et déclencher la transition d'ouverture (fade/scale)
-            setTimeout(() => {
-                isOpen = true;
-            }, 30);
+            openPopup(
+                item.title?.fr || item.name?.fr || "Détails",
+                popupContent,
+                item
+            );
         }
-    }
-    
-    const handleClose = () => {
-        isOpen = false;
-        // On ne met pas selectedItem à null tout de suite pour laisser la transition de fermeture se faire avec les données
-        setTimeout(() => {
-            if (!isOpen) selectedItem = null;
-        }, 600); // Correspond à la durée la plus longue de transition (fade: 600ms)
     }
 </script>
 
@@ -68,21 +64,6 @@
         {/if}
     {/each}
 </div>
-
-{#if selectedItem}
-    <Popup 
-        title={selectedItem.title?.fr || selectedItem.name?.fr || "Détails"} 
-        isOpen={isOpen} 
-        onClose={handleClose}
-    >
-        <!-- Contenu de la popup : on peut réutiliser le snippet ou faire un affichage custom -->
-        <div class="p-4">
-            {#if popupContent}
-                {@render popupContent(selectedItem)}
-            {/if}
-        </div>
-    </Popup>
-{/if}
 
 <style>
     /* Pour cacher la barre de scroll tout en gardant le scroll */

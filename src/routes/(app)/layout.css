@@ -7,8 +7,15 @@
 
 :root {
 	font-family: var(--font-sans);
+	scroll-behavior: smooth;
+	font-size: 15px; /* Équilibre entre 0.85rem et 1rem pour garder les proportions sans être trop petit */
 }
 
+body {
+    overflow-x: hidden;
+}
+
+/* Style global pour le texte */
 * {
 	font-variant-caps: normal;
 	font-feature-settings: normal;
@@ -16,13 +23,56 @@
 	font-weight: 300;
 }
 
-/* Responsive : Texte justifié sur mobile */
+/* On applique le style du Modèle 1 aux titres, paragraphes et boutons */
+h1, h2, h3, h4, p, nav a, button {
+	text-transform: uppercase;
+    max-width: 100%;
+    overflow-wrap: break-word;
+}
+
+/* On agrandit très légèrement la première lettre pour la "différenciation" subtile */
+h1::first-letter, h2::first-letter, h3::first-letter, h4::first-letter, p::first-letter, nav a::first-letter, button::first-letter {
+	font-size: 1.25em;
+}
+
+h1, h2, h3, h4, b, strong {
+	font-weight: 500;
+}
+
+/* Effet de révélation au scroll - Version Ultra Douce */
+.reveal {
+	opacity: 0;
+	transform: translateY(50px);
+	transition: 
+		opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1), 
+		transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+	will-change: opacity, transform;
+}
+
+.reveal-visible {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+/* Responsive : Texte justifié sur mobile uniquement pour les paragraphes */
 @media (max-width: 768px) {
-    p, .text-lg, .text-xl, .prose {
+    p, .prose p {
         text-align: justify;
         text-justify: inter-word;
         hyphens: auto;
         word-break: break-word;
+    }
+    
+    /* On force l'alignement au centre pour les titres sur mobile */
+    h1, h2, h3, h4, .text-xl, .text-2xl {
+        text-align: center !important;
+        text-justify: none !important;
+    }
+    
+    /* On garde l'alignement à gauche pour les boutons et nav si nécessaire, ou on centre aussi */
+    button, nav a {
+        text-align: left !important;
+        text-justify: none !important;
     }
     
     .container {
@@ -34,36 +84,4 @@
         margin-right: 0 !important;
         overflow-x: hidden !important;
     }
-}
-
-/* On applique le style du Modèle 1 aux titres, paragraphes et boutons */
-h1, h2, h3, h4, p, nav a, button {
-	text-transform: uppercase;
-    max-width: 100%;
-    overflow-wrap: break-word;
-}
-
-/* On réduit tout proportionnellement pour simuler les petites capitales */
-/* Cela garde le ratio entre un h1 (4xl) et un p (base) intact */
-:root {
-	font-size: 0.85rem;
-	scroll-behavior: smooth;
-}
-
-body {
-    overflow-x: hidden;
-}
-
-main {
-    display: grid;
-    grid-template-columns: 1fr;
-}
-
-/* On agrandit très légèrement la première lettre pour la "différenciation" subtile */
-h1::first-letter, h2::first-letter, h3::first-letter, h4::first-letter, p::first-letter, nav a::first-letter, button::first-letter {
-	font-size: 1.25em;
-}
-
-h1, h2, h3, h4, b, strong {
-	font-weight: 500;
 }
