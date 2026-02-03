@@ -9,7 +9,8 @@
         description = '',
         image = '',
         iconName = '',
-        href = ''
+        href = '',
+        onclick = null
     } = $props();
 
     let IconComponent = $derived(iconName ? icons[iconName as keyof typeof icons] : null);
@@ -19,7 +20,7 @@
 
 {#snippet cardContent()}
     <!-- Zone Image ou Icône (hauteur fixe) -->
-    <div class="h-48 bg-gray-50 flex items-center justify-center overflow-hidden">
+    <div class="h-60 md:h-72 bg-gray-50 flex items-center justify-center overflow-hidden">
         {#if image}
             <img
                 src={image}
@@ -37,13 +38,13 @@
     </div>
 
     <!-- Zone Contenu -->
-    <div class="p-6 flex-1 flex flex-col">
-        <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-[var(--hover-color)] transition-colors" style="--hover-color: {COLORS.primary}">
+    <div class="p-4 md:p-6 flex-1 flex flex-col items-start">
+        <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-2 group-hover:text-[var(--hover-color)] transition-colors text-left" style="--hover-color: {COLORS.primary}">
             {title}
         </h3>
 
         {#if description}
-            <p class="text-gray-600 text-sm line-clamp-3">
+            <p class="text-gray-600 text-xs md:text-sm line-clamp-3 text-left">
                 {description}
             </p>
         {/if}
@@ -51,11 +52,11 @@
 {/snippet}
 
 {#if href}
-    <a {href} class="{cardClass} cursor-pointer no-underline">
+    <a {href} {onclick} class="{cardClass} cursor-pointer no-underline">
         {@render cardContent()}
     </a>
 {:else}
-    <div class={cardClass}>
+    <div {onclick} class={cardClass}>
         {@render cardContent()}
     </div>
 {/if}

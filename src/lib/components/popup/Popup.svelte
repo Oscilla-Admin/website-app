@@ -41,7 +41,7 @@
         transition:fade={{ duration: 600 }}
     >
         <div 
-            class="bg-white p-8 rounded-2xl shadow-2xl max-w-[80%] w-full relative cursor-default"
+            class="bg-white p-6 md:p-8 rounded-2xl shadow-2xl max-w-[95%] md:max-w-[80%] w-full relative cursor-default"
             onclick={(e) => e.stopPropagation()}
             role="dialog"
             aria-modal="true"
@@ -50,8 +50,8 @@
             in:scale={{ duration: 600, start: 0.94, opacity: 0, easing: cubicOut }}
             out:scale={{ duration: 450, start: 0.96, opacity: 0, easing: cubicOut }}
         >
-            <div class="flex justify-between items-start mb-6">
-                <h2 class="text-2xl font-bold text-gray-900">{title}</h2>
+            <div class="flex justify-between items-start mb-4 md:mb-6">
+                <h2 class="text-xl md:text-2xl font-bold text-gray-900">{title}</h2>
                 <button 
                     onclick={onClose} 
                     class="p-2 -mr-2 text-gray-400 hover:text-gray-900 rounded-full hover:bg-gray-100 transition-colors"

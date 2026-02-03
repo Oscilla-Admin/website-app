@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { COLORS } from "$lib/utils/colors";
 	import { onMount } from "svelte";
-	import { getContactEmail } from "../function";
+	import { getContactEmail } from "$lib/utils/contact";
 	import * as m from '$paraglide/messages.js';
 
 	let contactEmail = $state('');
@@ -19,15 +19,15 @@
 	}
 </script>
 
-<section id="contact" class="flex flex-col items-center justify-center w-full py-16 px-8 gap-6 container mx-auto scroll-mt-32">
-	<h2 class="text-4xl font-bold mb-8">{m.contact_title()}</h2>
-	<p class="text-lg text-center max-w-2xl">
+<section id="contact" class="flex flex-col items-center justify-center w-full py-12 md:py-16 px-6 md:px-8 gap-6 container mx-auto scroll-mt-32">
+	<h2 class="text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-center">{m.contact_title()}</h2>
+	<p class="text-base md:text-lg text-center max-w-2xl">
 		{m.contact_description()}
 	</p>
 
 	<button
 		onclick={openMailto}
-		disabled={isLoading || !contactEmail}
+		disabled={!contactEmail}
 		class="p-4 px-8 rounded-md text-white font-medium transition-opacity hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed hover:cursor-pointer"
 		style="background-color: {COLORS.primary};"
 

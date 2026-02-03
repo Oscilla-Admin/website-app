@@ -6,11 +6,26 @@
         items: any[];
         children: Snippet<[any]>;
         popupContent?: Snippet<[any]>;
+        initialItemId?: string | null;
     }
 
-    let { items, children, popupContent }: Props = $props();
+    let { items, children, popupContent, initialItemId = null }: Props = $props();
     let selectedItem = $state<any>(null);
     let isOpen = $state(false);
+
+    // Ouverture automatique si initialItemId est présent
+    $effect(() => {
+        if (initialItemId && items.length > 0) {
+            const item = items.find(i => i.id === initialItemId);
+            if (item) {
+                selectedItem = item;
+                // Petit délai pour laisser la page charger avant d'ouvrir la popup
+                setTimeout(() => {
+                    isOpen = true;
+                }, 500);
+            }
+        }
+    });
 
     const handlePopup = (item: any) => {
         if (selectedItem === item) {

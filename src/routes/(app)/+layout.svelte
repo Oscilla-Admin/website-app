@@ -3,8 +3,19 @@
 	import Header from '../(layout-component)/header/Header.svelte';
 	import './layout.css'; 
 
+    let { children } = $props();
 </script>
 
 <Header />
-<slot />
+
+<main>
+    {@render children()}
+</main>
+
 <Footer />
+
+<style>
+    main {
+        min-height: 100vh;
+    }
+</style>

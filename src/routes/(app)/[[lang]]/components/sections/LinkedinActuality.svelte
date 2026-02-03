@@ -10,8 +10,13 @@
     });
 </script>
 
-<section class="py-16 bg-[var(--bg-color)] w-full scroll-mt-32" style="--bg-color: {COLORS.grayLight};">
-    <div class="container mx-auto px-4 text-center">
+<section class="relative py-24 w-full scroll-mt-32 overflow-hidden">
+    <!-- Dégradés de transition pour fond enchaîné -->
+    <div class="absolute inset-0 bg-[var(--bg-color)]" style="--bg-color: {COLORS.grayLight};"></div>
+    <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-white to-transparent"></div>
+    <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white to-transparent"></div>
+
+    <div class="container relative mx-auto px-4 text-center">
         <h2 class="text-4xl font-bold mb-12">{m.linkedin_actualities_title()}</h2>
         
         <div class="flex justify-center items-center min-h-[300px] bg-white rounded-xl shadow-sm p-4 w-3/4 mx-auto border border-gray-100">

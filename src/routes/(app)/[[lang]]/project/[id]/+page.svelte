@@ -4,7 +4,9 @@
 	import { getLocale } from '$paraglide/runtime.js';
 	import * as m from '$paraglide/messages.js';
 	import { onMount } from "svelte";
-	import { getContactEmail } from "../../components/function";
+	import { getContactEmail } from "$lib/utils/contact";
+    import { fade } from 'svelte/transition';
+    import PageLoader from '$lib/components/PageLoader.svelte';
 
 	let { data } = $props();
 
@@ -14,8 +16,15 @@
 	let isLoading = $state(true);
 
 	onMount(async () => {
+		// On s'assure que le scroll remonte en haut de page
+		window.scrollTo(0, 0);
+		
 		contactEmail = await getContactEmail();
-		isLoading = false;
+		
+        // On laisse le loader visible au moins 1.2s pour l'onde sonore
+        setTimeout(() => {
+            isLoading = false;
+        }, 400);
 	});
 
 	function openMailto() {
@@ -30,7 +39,9 @@
 	<meta name="description" content={data.project.description[locale]} />
 </svelte:head>
 
-<div class="min-h-screen mt-24">
+<PageLoader active={isLoading} />
+
+<div class="min-h-screen mt-24" in:fade={{ duration: 800, delay: 200 }}>
 	<!-- Header avec image -->
 	<div class="relative h-80 md:h-96 w-full overflow-hidden">
 		<img
@@ -42,7 +53,7 @@
 
 		<!-- Bouton retour -->
 		<a
-			href="/#activites-references"
+			href="/?activity={data.project.activityId}#activites-references"
 			class="absolute top-6 left-6 flex items-center gap-2 text-white bg-black/30 hover:bg-black/50 px-4 py-2 rounded-md transition-colors"
 		>
 			<ArrowLeft size={20} />

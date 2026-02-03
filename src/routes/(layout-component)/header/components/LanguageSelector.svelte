@@ -23,7 +23,8 @@
 		window.location.reload();
 	}
 
-	function toggleDropdown() {
+	function toggleDropdown(e: MouseEvent) {
+		e.stopPropagation();
 		isOpen = !isOpen;
 	}
 
@@ -32,10 +33,11 @@
 	}
 </script>
 
+<svelte:window onclick={closeDropdown} />
+
 <div class="relative">
 	<button
 		onclick={toggleDropdown}
-		onblur={() => setTimeout(closeDropdown, 150)}
 		class="flex items-center gap-2 p-1.5 rounded hover:bg-black/5 transition-colors cursor-pointer"
 		aria-label="Sélectionner la langue"
 		aria-expanded={isOpen}
@@ -45,7 +47,10 @@
 	</button>
 
 	{#if isOpen}
-		<div class="absolute top-full right-0 mt-2 bg-white rounded-lg shadow-xl border border-gray-200 overflow-hidden z-50 min-w-[140px]">
+		<div 
+			class="fixed md:absolute top-[60px] md:top-full right-4 md:right-0 bg-white rounded-lg shadow-xl border border-gray-200 overflow-hidden z-[100] min-w-[140px]"
+			onclick={(e) => e.stopPropagation()}
+		>
 			{#each locales as locale}
 				<button
 					onclick={() => handleLocaleChange(locale)}

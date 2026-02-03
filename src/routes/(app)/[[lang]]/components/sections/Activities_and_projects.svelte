@@ -5,8 +5,11 @@
 	import { projects, type Project } from "$lib/data/projects";
 	import { getLocale } from '$paraglide/runtime.js';
 	import * as m from '$paraglide/messages.js';
+    import { startPageLoader } from '$lib/utils/loader';
+    import { page } from '$app/state';
 
     let { activities }: { activities: Activity[] } = $props();
+    const initialActivityId = $derived(page.url.searchParams.get('activity'));
 
     const locale = getLocale();
 
@@ -17,9 +20,9 @@
 
 </script>
 
-<div id="activites-references" class="flex flex-col items-center justify-center w-full py-16 px-8 gap-4 container mx-auto scroll-mt-32">
-    <h2 class="text-4xl font-bold mb-8">{m.activities_title()}</h2>
-    <Carousel items={activities}>
+<div id="activites-references" class="flex flex-col items-center justify-center w-full py-12 md:py-16 px-4 md:px-8 gap-4 container mx-auto scroll-mt-32">
+    <h2 class="text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-center">{m.activities_title()}</h2>
+    <Carousel items={activities} initialItemId={initialActivityId}>
         {#snippet children(activity)}
             <CarouselCard title={activity.title[locale]} iconName={activity.iconName} image={activity.image} />
         {/snippet}
@@ -45,6 +48,7 @@
                                     description={project.description[locale]}
                                     image={project.image}
                                     href={`/project/${project.id}`}
+                                    onclick={() => startPageLoader()}
                                 />
                             {/snippet}
                         </Carousel>

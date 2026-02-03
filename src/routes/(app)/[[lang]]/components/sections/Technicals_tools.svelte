@@ -11,9 +11,14 @@
 	const locale = getLocale();
 </script>
 
-<section id="outils-techniques" class="py-16 bg-[var(--bg-color)] w-full scroll-mt-32" style="--bg-color: {COLORS.grayLight};">
-    <div class="flex flex-col items-center justify-center w-full px-8 gap-4 container mx-auto">
-        <h2 class="text-4xl font-bold mb-8">{m.technical_title()}</h2>
+<section id="outils-techniques" class="relative py-24 w-full scroll-mt-32 overflow-hidden">
+    <!-- Dégradés de transition pour fond enchaîné -->
+    <div class="absolute inset-0 bg-[var(--bg-color)]" style="--bg-color: {COLORS.grayLight};"></div>
+    <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-white to-transparent"></div>
+    <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white to-transparent"></div>
+
+    <div class="relative flex flex-col items-center justify-center w-full px-4 md:px-8 gap-4 container mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-center">{m.technical_title()}</h2>
         <Carousel items={technicalTools}>
             {#snippet children(tool)}
                 <CarouselCard title={tool.title[locale]} iconName={tool.iconName} image={tool.image} />
