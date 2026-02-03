@@ -12,15 +12,9 @@ export default defineConfig({
 	ssr: {
 		noExternal: ['lucide-svelte', '@inlang/paraglide-js']
 	},
-    worker: {
-        format: 'es'
-    },
 	build: {
 		target: 'esnext',
-		sourcemap: false,
-        rollupOptions: {
-            maxParallelFileOps: 2 // Limite la parallélisation pour éviter les blocages
-        }
+		sourcemap: false
 	},
 	test: {
 		expect: { requireAssertions: true },
