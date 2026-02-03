@@ -1,38 +1,53 @@
-# sv
+# Oscilla - Expertise Acoustique
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Site vitrine professionnel pour Oscilla, bureau d'études en acoustique et isolation phonique.
 
-## Creating a project
+## 🚀 Technologies
 
-If you're seeing this, you've probably already done this step. Congrats!
+- **Framework** : [SvelteKit 5](https://svelte.dev/) (Runes)
+- **Styles** : [Tailwind CSS 4](https://tailwindcss.com/)
+- **Internationalisation** : [Paraglide-JS](https://inlang.com/m/gerre34r/library-inlang-paraglideJs) (Français, Anglais, Catalan)
+- **Icônes** : [Lucide Svelte](https://lucide.dev/)
+- **Déploiement** : [Netlify](https://www.netlify.com/)
 
-```sh
-# create a new project in the current directory
-npx sv create
+## 🎨 Fonctionnalités Clés
 
-# create a new project in my-app
-npx sv create my-app
-```
+- **Design Premium** : Typographie soignée (Inter) avec style "majuscules calibrées" pour un rendu technique et élégant.
+- **Animations Interactives** :
+  - Ondes sonores 3D réactives à la vélocité du scroll.
+  - Système de "Reveal on Scroll" pour une apparition fluide des sections.
+  - Transitions de pages personnalisées avec loader d'ondes sonores.
+- **Navigation Intelligente** :
+  - Menu burger optimisé pour mobile.
+  - Détection automatique de la section active dans la barre de navigation.
+  - Système de retour intelligent depuis les pages projets vers les popups d'activités.
+- **Sécurité** : Protection des adresses email via une API interne SvelteKit pour éviter le spam.
 
-## Developing
+## 🛠️ Installation et Développement
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+1. **Installation des dépendances** :
+   ```bash
+   npm install
+   ```
 
-```sh
-npm run dev
+2. **Lancement du serveur de développement** :
+   ```bash
+   npm run dev
+   ```
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+3. **Build pour la production** :
+   ```bash
+   npm run build
+   ```
 
-## Building
+## 📁 Structure du Projet
 
-To create a production version of your app:
+- `src/lib/components/` : Composants réutilisables (Carousel, Popups, Ondes 3D).
+- `src/lib/data/` : Données structurées pour les activités, références et outils.
+- `src/lib/utils/` : Utilitaires globaux (moteur d'ondes, sécurité contact, reveal).
+- `src/routes/` : Système de routage SvelteKit avec gestion multilingue `[[lang]]`.
+- `messages/` : Fichiers de traduction JSON.
 
-```sh
-npm run build
-```
+## 📧 Contact
 
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+Pour toute question technique sur le projet, contactez le développeur : **Timothée Beraudy-Nicolet**.
