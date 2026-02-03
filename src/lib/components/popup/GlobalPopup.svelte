@@ -23,7 +23,7 @@
 
 {#if $popupStore.isOpen}
     <div 
-        class="fixed inset-0 z-[10000] bg-black/70 backdrop-blur-md flex items-center justify-center p-4"
+        class="fixed inset-0 z-[10000] bg-black/70 backdrop-blur-md flex items-center justify-center p-6 md:p-4"
         onclick={closePopup}
         role="button"
         tabindex="0"
@@ -33,7 +33,7 @@
         transition:fade={{ duration: 600 }}
     >
         <div 
-            class="bg-white p-6 md:p-8 rounded-2xl shadow-2xl max-w-[95%] md:max-w-[80%] w-full relative cursor-default z-[10001]"
+            class="bg-white p-6 md:p-8 rounded-2xl shadow-2xl max-w-[95%] md:max-w-[80%] max-h-[85vh] md:max-h-none w-full relative cursor-default z-[10001] flex flex-col"
             onclick={(e) => e.stopPropagation()}
             role="dialog"
             aria-modal="true"
@@ -42,7 +42,7 @@
             in:scale={{ duration: 600, start: 0.94, opacity: 0, easing: cubicOut }}
             out:scale={{ duration: 450, start: 0.96, opacity: 0, easing: cubicOut }}
         >
-            <div class="flex justify-between items-start mb-4 md:mb-6">
+            <div class="flex justify-between items-start mb-4 md:mb-6 shrink-0">
                 <h2 class="text-xl md:text-2xl font-bold text-gray-900">{$popupStore.title}</h2>
                 <button 
                     onclick={closePopup} 
@@ -53,7 +53,7 @@
                 </button>
             </div>
             
-            <div class="overflow-y-auto max-h-[80vh]">
+            <div class="overflow-y-auto pr-2 custom-scrollbar">
                 {#if $popupStore.content && $popupStore.data}
                     {@render $popupStore.content($popupStore.data)}
                 {/if}
