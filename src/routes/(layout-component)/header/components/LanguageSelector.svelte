@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { locales, getLocale, setLocale, type Locale } from '$paraglide/runtime.js';
-	import { ChevronDown } from 'lucide-svelte';
+	import ChevronDown from 'lucide-svelte/icons/chevron-down';
 
 	let isOpen = $state(false);
 	const currentLocale = getLocale();

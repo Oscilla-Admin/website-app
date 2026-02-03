@@ -2,7 +2,10 @@
 	import Button from "$lib/components/Button.svelte";
 	import LinkIcon from "$lib/components/LinkIcon.svelte";
 	import LanguageSelector from "./LanguageSelector.svelte";
-	import { Mail, Linkedin, Menu, X } from 'lucide-svelte';
+	import Mail from 'lucide-svelte/icons/mail';
+	import Linkedin from 'lucide-svelte/icons/linkedin';
+	import Menu from 'lucide-svelte/icons/menu';
+	import X from 'lucide-svelte/icons/x';
 	import * as m from '$paraglide/messages.js';
     import { fade, fly } from 'svelte/transition';
     import { startPageLoader } from '$lib/utils/loader';
@@ -144,13 +147,13 @@
     <!-- svelte-ignore a11y_click_events_have_key_events -->
     <!-- svelte-ignore a11y_no_static_element_interactions -->
     <div 
-        class="fixed inset-0 bg-black/20 backdrop-blur-sm z-[55] lg:hidden"
+        class="fixed inset-0 bg-black/20 backdrop-blur-sm z-40 lg:hidden"
         onclick={closeMenu}
         transition:fade={{ duration: 200 }}
     ></div>
     
     <div 
-        class="fixed top-0 right-0 h-full w-64 bg-white shadow-2xl z-[60] lg:hidden flex flex-col p-8 pt-24 gap-6"
+        class="fixed top-0 right-0 h-full w-64 bg-white shadow-2xl z-50 lg:hidden flex flex-col p-8 pt-24 gap-6"
         transition:fly={{ x: 256, duration: 300 }}
     >
         <nav class="flex flex-col gap-6 items-start">

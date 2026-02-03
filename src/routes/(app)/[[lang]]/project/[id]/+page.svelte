@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { COLORS } from "$lib/utils/colors";
-	import { ArrowLeft } from "lucide-svelte";
+	import ArrowLeft from "lucide-svelte/icons/arrow-left";
 	import { getLocale } from '$paraglide/runtime.js';
 	import * as m from '$paraglide/messages.js';
 	import { onMount } from "svelte";

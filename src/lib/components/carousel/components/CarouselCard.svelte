@@ -1,6 +1,17 @@
 <script lang="ts">
 	import { COLORS } from '$lib/utils/colors';
-    import { Waves, HandMetal, Briefcase, Factory, Music, Activity, FileCheck, Gauge, Speaker, Hammer, Monitor, Camera } from 'lucide-svelte';
+	import Waves from 'lucide-svelte/icons/waves';
+	import HandMetal from 'lucide-svelte/icons/hand-metal';
+	import Briefcase from 'lucide-svelte/icons/briefcase';
+	import Factory from 'lucide-svelte/icons/factory';
+	import Music from 'lucide-svelte/icons/music';
+	import Activity from 'lucide-svelte/icons/activity';
+	import FileCheck from 'lucide-svelte/icons/file-check';
+	import Gauge from 'lucide-svelte/icons/gauge';
+	import Speaker from 'lucide-svelte/icons/speaker';
+	import Hammer from 'lucide-svelte/icons/hammer';
+	import Monitor from 'lucide-svelte/icons/monitor';
+	import Camera from 'lucide-svelte/icons/camera';
 
     const icons = { Waves, HandMetal, Briefcase, Factory, Music, Activity, FileCheck, Gauge, Speaker, Hammer, Monitor, Camera };
 
@@ -20,7 +31,7 @@
 
 {#snippet cardContent()}
     <!-- Zone Image ou Icône (hauteur fixe) -->
-    <div class="h-60 md:h-72 bg-gray-50 flex items-center justify-center overflow-hidden">
+    <div class="h-48 bg-gray-50 flex items-center justify-center overflow-hidden">
         {#if image}
             <img
                 src={image}

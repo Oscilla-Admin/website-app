@@ -2,13 +2,13 @@
 	import { onMount } from 'svelte';
 	import { drawSoundWave, type WaveOptions } from '$lib/utils/waves';
 
-	let canvas: HTMLCanvasElement;
+	let canvas: HTMLCanvasElement = $state();
 	let scrollY = $state(0);
 	let currentIntensity = $state(0);
 
 	const options: WaveOptions = {
-		lines: 5,
-		points: 120,
+		lines: 4, // Réduit de 5 à 4
+		points: 80, // Réduit de 120 à 80
 		lineWidth: 1.5,
 		baseAlpha: 0.3,
 		baseAmplitude: 20,
@@ -20,6 +20,7 @@
 	};
 
 	onMount(() => {
+		if (!canvas) return;
 		const ctx = canvas.getContext('2d');
 		if (!ctx) return;
 
@@ -29,6 +30,7 @@
 		let scrollVelocity = 0;
 
 		const resize = () => {
+			if (!canvas) return;
 			canvas.width = canvas.offsetWidth * window.devicePixelRatio;
 			canvas.height = canvas.offsetHeight * window.devicePixelRatio;
 			ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
@@ -38,6 +40,7 @@
 		resize();
 
 		const draw = () => {
+			if (!canvas) return;
 			const w = canvas.width / window.devicePixelRatio;
 			const h = canvas.height / window.devicePixelRatio;
 

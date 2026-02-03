@@ -1,9 +1,8 @@
 <script lang="ts">
 	import LinkIcon from "$lib/components/LinkIcon.svelte";
-	import { Linkedin } from "lucide-svelte";
-    import { Github } from "lucide-svelte";
+	import Linkedin from "lucide-svelte/icons/linkedin";
+    import Github from "lucide-svelte/icons/github";
     import * as m from '$paraglide/messages.js';
-
 </script>
 
 <footer class="bg-gray-100 py-2 md:py-4">

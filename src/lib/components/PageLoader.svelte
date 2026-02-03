@@ -3,12 +3,12 @@
 	import { drawSoundWave, type WaveOptions } from '$lib/utils/waves';
 	import * as m from '$paraglide/messages.js';
 
-	let canvas: HTMLCanvasElement;
+	let canvas: HTMLCanvasElement = $state();
 	let { active = false } = $props();
 
 	const options: WaveOptions = {
-		lines: 8,
-		points: 100,
+		lines: 6, // Réduit de 8 à 6
+		points: 80, // Réduit de 100 à 80
 		lineWidth: 2,
 		baseAlpha: 0.6,
 		baseAmplitude: 80,
@@ -29,6 +29,7 @@
 		let time = 0;
 
 		const resize = () => {
+			if (!canvas) return;
 			canvas.width = window.innerWidth * window.devicePixelRatio;
 			canvas.height = window.innerHeight * window.devicePixelRatio;
 			ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
@@ -38,10 +39,10 @@
 		resize();
 
 		const draw = () => {
+			if (!canvas) return;
 			const w = window.innerWidth;
 			const h = window.innerHeight;
 
-			// Le loader a une intensité fixe de 0.5 pour être dynamique sans scroll
 			drawSoundWave(ctx, w, h, time, 0.5, options);
 
 			time += options.baseSpeed;
