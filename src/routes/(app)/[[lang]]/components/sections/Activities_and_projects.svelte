@@ -2,13 +2,13 @@
 	import type { Activity } from "$lib/data/activities";
 	import Carousel from "$lib/components/carousel/Carousel.svelte";
 	import CarouselCard from "$lib/components/carousel/components/CarouselCard.svelte";
-	import { projects, type Project } from "$lib/data/projects";
+	import type { Project } from "$lib/data/projects";
 	import { getLocale } from '$paraglide/runtime.js';
 	import * as m from '$paraglide/messages.js';
     import { startPageLoader } from '$lib/utils/loader';
     import { page } from '$app/state';
 
-    let { activities }: { activities: Activity[] } = $props();
+    let { activities, projects }: { activities: Activity[], projects: Project[] } = $props();
     const initialActivityId = $derived(page.url.searchParams.get('activity'));
 
     const locale = getLocale();
@@ -34,7 +34,6 @@
                     </div>
                 {/if}
                 <div>
-                    <h3 class="text-2xl font-bold mb-3">{activity.title[locale]}</h3>
                     <p class="text-gray-600">{activity.description[locale]}</p>
                 </div>
 

@@ -1,6 +1,7 @@
 <script lang="ts">
     import type { Snippet } from 'svelte';
 	import { openPopup, closePopup } from '$lib/utils/popup';
+    import { getLocale } from '$paraglide/runtime.js';
 
     interface Props {
         items: any[];
@@ -11,6 +12,7 @@
 
     let { items, children, popupContent, initialItemId = null }: Props = $props();
     let selectedItem = $state<any>(null);
+    const locale = getLocale();
 
     // Ouverture automatique si initialItemId est présent
     $effect(() => {
@@ -21,7 +23,7 @@
                 // On utilise le store global pour ouvrir la popup
                 setTimeout(() => {
                     openPopup(
-                        item.title?.fr || item.name?.fr || "Détails",
+                        item.title || item.name || "Détails",
                         popupContent,
                         item
                     );
@@ -39,7 +41,7 @@
         if (popupContent) {
             selectedItem = item;
             openPopup(
-                item.title?.fr || item.name?.fr || "Détails",
+                item.title || item.name || "Détails",
                 popupContent,
                 item
             );

@@ -31,7 +31,6 @@
                         </div>
                     {/if}
                     <div>
-                        <h3 class="text-2xl font-bold mb-3">{tool.title[locale]}</h3>
                         <p class="text-gray-600">{tool.description[locale]}</p>
                     </div>
                 </div>

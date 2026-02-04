@@ -23,23 +23,23 @@
 </svelte:head>
 
 <div class="flex flex-col items-center justify-center">
-	<Hero />
+	<Hero siteContent={data.siteContent} />
 	<SoundWave3D />
 	<div use:reveal class="reveal w-full flex justify-center">
-		<About />
+		<About siteContent={data.siteContent} />
 	</div>
 	<div use:reveal class="reveal w-full flex justify-center">
 		<LinkedinActuality />
 	</div>
 	<SoundWave3D />
 	<div use:reveal class="reveal w-full flex justify-center">
-		<ActivitiesAndProjects activities={data.activities} />
+		<ActivitiesAndProjects activities={data.activities} projects={data.projects} />
 	</div>
 	<div use:reveal class="reveal w-full flex justify-center">
 		<TechnicalsTools technicalTools={data.technicalTools} />
 	</div>
 	<SoundWave3D />
 	<div use:reveal class="reveal w-full flex justify-center">
-		<Contacts />
+		<Contacts siteContent={data.siteContent} />
 	</div>
 </div>
