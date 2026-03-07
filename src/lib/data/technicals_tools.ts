@@ -84,7 +84,7 @@ export const technicalTools: TechnicalTool[] = [
 			en: 'Real-time visualization of sound sources and acoustic leaks.',
 			ca: 'Visualització en temps real de les fonts sonores i fuites acoustiques.'
 		},
-		image: 'https://images.unsplash.com/photo-1516035053911-c4a3b9d777d9?q=80&w=800&auto=format&fit=crop',
+		image: 'https://images.unsplash.com/photo-1551048411-9f3f201bd2fc?q=80&w=800&auto=format&fit=crop',
 	},
 	{
 		id: '6',

@@ -1,6 +1,9 @@
 <script lang="ts">
     import type { Snippet } from 'svelte';
 	import { openPopup, closePopup } from '$lib/utils/popup';
+    import { getLocale } from '$paraglide/runtime.js';
+    import { ChevronLeft, ChevronRight } from 'lucide-svelte';
+    import { scrollCarousel } from './functions';
 
     interface Props {
         items: any[];
@@ -11,6 +14,8 @@
 
     let { items, children, popupContent, initialItemId = null }: Props = $props();
     let selectedItem = $state<any>(null);
+    let carouselContainer = $state<HTMLElement | null>(null);
+    const locale = getLocale();
 
     // Ouverture automatique si initialItemId est présent
     $effect(() => {
@@ -21,7 +26,7 @@
                 // On utilise le store global pour ouvrir la popup
                 setTimeout(() => {
                     openPopup(
-                        item.title?.fr || item.name?.fr || "Détails",
+                        item.title || item.name || "Détails",
                         popupContent,
                         item
                     );
@@ -39,7 +44,7 @@
         if (popupContent) {
             selectedItem = item;
             openPopup(
-                item.title?.fr || item.name?.fr || "Détails",
+                item.title || item.name || "Détails",
                 popupContent,
                 item
             );
@@ -47,22 +52,47 @@
     }
 </script>
 
-<div class="flex overflow-x-auto snap-x snap-mandatory gap-6 w-full pb-6 px-4 no-scrollbar">
-    {#each items as item}
-        {#if popupContent}
-            <button 
-                class="snap-start flex-none w-[85%] md:w-[45%] lg:w-[30%] text-left hover:cursor-pointer" 
-                onclick={() => { handlePopup(item) }}
-                type="button"
-            >
-                {@render children(item)}
-            </button>
-        {:else}
-            <div class="snap-start flex-none w-[85%] md:w-[45%] lg:w-[30%]">
-                {@render children(item)}
-            </div>
-        {/if}
-    {/each}
+<div class="relative group w-full">
+    <!-- Flèches de navigation -->
+    <button 
+        class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 p-2 rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-opacity disabled:hidden md:flex items-center justify-center -translate-x-4 hover:bg-white"
+        onclick={() => scrollCarousel(carouselContainer, 'left')}
+        aria-label="Précédent"
+        type="button"
+    >
+        <ChevronLeft class="w-6 h-6" />
+    </button>
+
+    <button 
+        class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 p-2 rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-opacity disabled:hidden md:flex items-center justify-center translate-x-4 hover:bg-white"
+        onclick={() => scrollCarousel(carouselContainer, 'right')}
+        aria-label="Suivant"
+        type="button"
+    >
+        <ChevronRight class="w-6 h-6" />
+    </button>
+
+    <!-- Conteneur défilant -->
+    <div 
+        bind:this={carouselContainer}
+        class="flex overflow-x-auto snap-x snap-mandatory gap-6 w-full pb-6 px-4 no-scrollbar"
+    >
+        {#each items as item}
+            {#if popupContent}
+                <button 
+                    class="snap-start flex-none w-[85%] md:w-[45%] lg:w-[30%] text-left hover:cursor-pointer" 
+                    onclick={() => { handlePopup(item) }}
+                    type="button"
+                >
+                    {@render children(item)}
+                </button>
+            {:else}
+                <div class="snap-start flex-none w-[85%] md:w-[45%] lg:w-[30%]">
+                    {@render children(item)}
+                </div>
+            {/if}
+        {/each}
+    </div>
 </div>
 
 <style>

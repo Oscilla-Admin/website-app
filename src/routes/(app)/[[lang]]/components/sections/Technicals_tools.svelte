@@ -24,15 +24,14 @@
                 <CarouselCard title={tool.title[locale]} iconName={tool.iconName} image={tool.image} />
             {/snippet}
             {#snippet popupContent(tool)}
-                <div class="space-y-6">
+                <div class="space-y-6 md:space-y-8 flex flex-col md:flex-row gap-6 md:gap-12 w-full h-full">
                     {#if tool.image}
-                        <div class="w-full h-64 overflow-hidden rounded-xl">
-                            <img src={tool.image} alt={tool.title[locale]} class="w-full h-full object-cover" />
+                        <div class="w-full md:w-1/2 h-64 md:h-[500px] overflow-hidden rounded-xl flex-shrink-0 bg-transparent flex items-center justify-center">
+                            <img src={tool.image} alt={tool.title[locale]} class="w-full h-full object-contain object-center" />
                         </div>
                     {/if}
-                    <div>
-                        <h3 class="text-2xl font-bold mb-3">{tool.title[locale]}</h3>
-                        <p class="text-gray-600">{tool.description[locale]}</p>
+                    <div class="w-full md:w-1/2 flex flex-col justify-center">
+                        <p class="text-gray-600 text-base md:text-lg leading-relaxed whitespace-pre-wrap font-roboto">{tool.description[locale]}</p>
                     </div>
                 </div>
             {/snippet}

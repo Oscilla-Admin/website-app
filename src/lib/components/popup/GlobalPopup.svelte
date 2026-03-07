@@ -2,6 +2,9 @@
     import { popupStore, closePopup } from '$lib/utils/popup';
     import { fade, scale } from 'svelte/transition';
     import { cubicOut } from 'svelte/easing';
+    import { getLocale } from '$paraglide/runtime.js';
+
+    const locale = getLocale();
 
     // Bloque le scroll de la page quand la popup est ouverte
     $effect(() => {
@@ -33,7 +36,7 @@
         transition:fade={{ duration: 600 }}
     >
         <div 
-            class="bg-white p-6 md:p-8 rounded-2xl shadow-2xl max-w-[95%] md:max-w-[80%] max-h-[85vh] md:max-h-none w-full relative cursor-default z-[10001] flex flex-col"
+            class="bg-white p-6 md:p-10 rounded-2xl shadow-2xl max-w-[95%] md:max-w-[85vw] lg:max-w-[1200px] max-h-[98vh] w-full min-h-[50vh] relative cursor-default z-[10001] flex flex-col"
             onclick={(e) => e.stopPropagation()}
             role="dialog"
             aria-modal="true"
@@ -42,14 +45,18 @@
             in:scale={{ duration: 600, start: 0.94, opacity: 0, easing: cubicOut }}
             out:scale={{ duration: 450, start: 0.96, opacity: 0, easing: cubicOut }}
         >
-            <div class="flex justify-between items-start mb-4 md:mb-6 shrink-0">
-                <h2 class="text-xl md:text-2xl font-bold text-gray-900">{$popupStore.title}</h2>
-                <button 
+            <div class="flex justify-between items-start mb-6 md:mb-8 shrink-0">
+                <h2 class="text-2xl md:text-4xl font-black text-gray-900 leading-tight">
+                    {typeof $popupStore.title === 'string' ? $popupStore.title : ($popupStore.title?.[locale] || "Détails")}
+                </h2>
+                <button
                     onclick={closePopup} 
                     class="p-2 -mr-2 text-gray-400 hover:text-gray-900 rounded-full hover:bg-gray-100 transition-colors"
                     aria-label="Fermer la fenêtre"
                 >
-                    ✕
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 md:w-10 md:h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
                 </button>
             </div>
             

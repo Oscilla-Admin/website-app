@@ -4,7 +4,7 @@
 	"version": "0.0.1",
 	"type": "module",
 	"scripts": {
-		"dev": "vite dev",
+		"dev": "vite dev --host",
 		"build": "vite build",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
@@ -43,6 +43,7 @@
 	},
 	"dependencies": {
 		"embla-carousel-svelte": "^8.6.0",
-		"lucide-svelte": "^0.562.0"
+		"lucide-svelte": "^0.562.0",
+		"pocketbase": "^0.26.8"
 	}
 }

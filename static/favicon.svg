@@ -1,8 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Cercle 1 (Fond, plus clair) -->
   <circle cx="30" cy="45" r="24" stroke="#829F7D" stroke-width="8" fill="none" opacity="0.15" />
   <line x1="45" y1="26" x2="80" y2="-10" stroke="#829F7D" stroke-width="1.5" opacity="0.15" />
+
+  <!-- Cercle 2 (Milieu) -->
   <circle cx="48" cy="58" r="24" stroke="#829F7D" stroke-width="8" fill="none" opacity="0.4" />
   <line x1="63" y1="39" x2="98" y2="3" stroke="#829F7D" stroke-width="1.5" opacity="0.4" />
+
+  <!-- Cercle 3 (Premier plan, plus foncé) -->
   <circle cx="68" cy="72" r="24" stroke="#829F7D" stroke-width="8" fill="none" opacity="1" />
   <line x1="83" y1="53" x2="118" y2="17" stroke="#829F7D" stroke-width="1.5" opacity="1" />
 </svg>

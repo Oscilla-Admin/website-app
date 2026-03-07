@@ -3,7 +3,7 @@ import type { Snippet } from 'svelte';
 
 interface PopupState {
     isOpen: boolean;
-    title: string;
+    title: any; // Peut être une string ou un objet de trad
     content: Snippet<[any]> | null;
     data: any | null;
 }
@@ -15,7 +15,7 @@ export const popupStore = writable<PopupState>({
     data: null
 });
 
-export const openPopup = (title: string, content: Snippet<[any]>, data: any) => {
+export const openPopup = (title: any, content: Snippet<[any]>, data: any) => {
     popupStore.set({
         isOpen: true,
         title,

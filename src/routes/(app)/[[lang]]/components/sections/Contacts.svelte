@@ -3,6 +3,10 @@
 	import { onMount } from "svelte";
 	import { getContactEmail } from "$lib/utils/contact";
 	import * as m from '$paraglide/messages.js';
+	import { getLocale } from '$paraglide/runtime.js';
+
+	let { siteContent = {} } = $props();
+	const locale = getLocale();
 
 	let contactEmail = $state('');
 	let isLoading = $state(true);
@@ -20,9 +24,11 @@
 </script>
 
 <section id="contact" class="flex flex-col items-center justify-center w-full py-12 md:py-16 px-6 md:px-8 gap-6 container mx-auto scroll-mt-32">
-	<h2 class="text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-center">{m.contact_title()}</h2>
+	<h2 class="text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-center">
+		{siteContent.contact_title?.[locale] || m.contact_title()}
+	</h2>
 	<p class="text-base md:text-lg text-center max-w-2xl">
-		{m.contact_description()}
+		{siteContent.contact_description?.[locale] || m.contact_description()}
 	</p>
 
 	<button

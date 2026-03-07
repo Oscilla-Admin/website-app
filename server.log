@@ -1,0 +1,17 @@
+
+> app@0.0.1 dev
+> vite dev --host
+
+[32m✔[39m [1m[32m[paraglide-js] [39m[22mCompilation complete (locale-modules)
+Port 5173 is in use, trying another one...
+
+  [32m[1mVITE[22m v7.3.1[39m  [2mready in [0m[1m2361[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m5174[22m/[39m
+  [32m➜[39m  [1mNetwork[22m: [36mhttp://192.168.1.21:[1m5174[22m/[39m
+[36mℹ[39m [1m[34m[paraglide-js] [39m[22mRe-compiling inlang project... File "project.inlang\settings.json" has changed.
+
+[43m[30m WARN [39m[49m [1m[33m[paraglide-js] [39m[22mFailed to re-compile project: Unexpected token '/', ...""en",
+    // "ca"
+  "... is not valid JSON
+

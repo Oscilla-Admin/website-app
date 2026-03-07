@@ -55,7 +55,7 @@
         </h3>
 
         {#if description}
-            <p class="text-gray-600 text-xs md:text-sm line-clamp-3 text-left">
+            <p class="text-gray-600 text-xs md:text-sm line-clamp-3 text-left whitespace-pre-wrap font-roboto">
                 {description}
             </p>
         {/if}
