@@ -123,7 +123,7 @@
 	<div class="hidden lg:flex shrink-0 flex-row items-center justify-end gap-1.5" style="color: {isTransparent ? COLORS.white : COLORS.black};">
 		<LanguageSelector {isTransparent} />
 		<LinkIcon onclick={openMailto} icon={Mail} {isTransparent} size={24} />
-		<LinkIcon href="https://linkedin.com/company/oscilla" icon={Linkedin} {isTransparent} size={24} />
+		<LinkIcon href="https://linkedin.com/company/oscilla-acoustique" icon={Linkedin} {isTransparent} size={24} />
 	</div>
 
     <!-- Mobile Menu Button -->
@@ -167,7 +167,7 @@
         
         <div class="mt-auto flex flex-row items-center gap-4 border-t pt-6">
             <LinkIcon onclick={openMailto} icon={Mail} />
-            <LinkIcon href="https://linkedin.com/company/oscilla" icon={Linkedin} />
+            <LinkIcon href="https://linkedin.com/company/oscilla-acoustique" icon={Linkedin} />
         </div>
     </div>
 {/if}
