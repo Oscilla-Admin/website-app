@@ -27,17 +27,20 @@
             <CarouselCard title={activity.title[locale]} iconName={activity.iconName} image={activity.image} />
         {/snippet}
         {#snippet popupContent(activity)}
-            <div class="space-y-6">
+            <div class="space-y-6 md:space-y-8 flex flex-col md:flex-row gap-6 md:gap-12 w-full h-full">
                 {#if activity.image}
-                    <div class="w-full h-64 overflow-hidden rounded-xl">
-                        <img src={activity.image} alt={activity.title[locale]} class="w-full h-full object-cover" />
+                    <div class="w-full md:w-1/2 h-64 md:h-[500px] overflow-hidden rounded-xl flex-shrink-0 bg-transparent flex items-center justify-center">
+                        <img src={activity.image} alt={activity.title[locale]} class="w-full h-full object-contain object-center" />
                     </div>
                 {/if}
-                <div>
-                    <p class="text-gray-600">{activity.description[locale]}</p>
+                <div class="w-full md:w-1/2 flex flex-col justify-start">
+                    {#if activity.subtitle?.[locale]}
+                        <h3 class="text-xl md:text-2xl font-bold mb-4">{activity.subtitle[locale]}</h3>
+                    {/if}
+                    <p class="text-gray-600 text-base md:text-lg leading-relaxed whitespace-pre-wrap font-roboto">{activity.description[locale]}</p>
                 </div>
 
-                {#if getProjectsByActivity(activity.id).length > 0}
+                <!-- {#if getProjectsByActivity(activity.id).length > 0}
                     <div>
                         <h4 class="text-xl font-semibold mb-4">{m.activities_related_projects()}</h4>
                         <Carousel items={getProjectsByActivity(activity.id)}>
@@ -52,7 +55,7 @@
                             {/snippet}
                         </Carousel>
                     </div>
-                {/if}
+                {/if} -->
             </div>
         {/snippet}
     </Carousel>

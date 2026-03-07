@@ -7,6 +7,11 @@ export interface Activity {
 		en: string;
 		ca: string;
 	};
+	subtitle?: {
+		fr: string;
+		en: string;
+		ca: string;
+	};
 	description: {
 		fr: string;
 		en: string;

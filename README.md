@@ -26,11 +26,13 @@ Site vitrine professionnel pour Oscilla, bureau d'études en acoustique et isola
 ## 🛠️ Installation et Développement
 
 1. **Installation des dépendances** :
+
    ```bash
    npm install
    ```
 
 2. **Lancement du serveur de développement** :
+
    ```bash
    npm run dev
    ```

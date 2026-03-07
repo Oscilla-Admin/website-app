@@ -3,7 +3,7 @@ import { pb } from './pocketbase';
 export async function getActivities() {
     try {
         const records = await pb.collection('activities').getFullList({
-            sort: '-created', // On trie par date de création en attendant
+            sort: 'order', // On trie par ordre croissant défini dans pocketbase (1 en premier)
         });
 
         console.log(`[DB] ${records.length} activités trouvées dans PocketBase`);
@@ -14,6 +14,11 @@ export async function getActivities() {
                 fr: record.title_fr || '',
                 en: record.title_en || '',
                 ca: record.title_ca || ''
+            },
+            subtitle: {
+                fr: record.subtitle_fr || '',
+                en: record.subtitle_en || '',
+                ca: record.subtitle_ca || ''
             },
             description: {
                 fr: record.description_fr || '',
@@ -55,7 +60,7 @@ export async function getProjects() {
 export async function getTechnicalTools() {
     try {
         const records = await pb.collection('technical_tools').getFullList({
-            sort: '-created',
+            sort: 'order',
         });
 
         return records.map(record => ({
@@ -114,11 +119,14 @@ export async function getSiteContent() {
     
     const content: Record<string, any> = {};
     records.forEach(record => {
-        content[record.key] = {
-            fr: record.content_fr,
-            en: record.content_en,
-            ca: record.content_ca
-        };
+        const key = record.key ? record.key.trim() : '';
+        if (key) {
+            content[key] = {
+                fr: record.content_fr,
+                en: record.content_en,
+                ca: record.content_ca
+            };
+        }
     });
     
     return content;

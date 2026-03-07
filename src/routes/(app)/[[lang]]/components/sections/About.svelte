@@ -15,8 +15,11 @@
         {m.about_title()}
     </h2>
     <div class="w-full max-w-3xl">
-        <p class="text-base md:text-lg text-center mb-4">
+        <p class="text-base md:text-lg text-center mb-4 font-roboto">
             {siteContent.about_description?.[locale] || m.about_description()}
+        </p>
+         <p class="text-base md:text-lg text-center mb-4 font-roboto">
+            {siteContent.about_description_2?.[locale] || m.about_description()}
         </p>
     </div>
     
@@ -24,12 +27,12 @@
         {#if isOpen}
             <div class="flex flex-col items-center justify-center w-full gap-8 mb-8" transition:slide={{ duration: 600 }}>
                 <div class="flex flex-col items-center justify-center w-full md:w-3/4">
-                    <h3 class="text-xl md:text-2xl font-bold text-center pb-4 w-full">{m.about_history_title()}</h3>
-                    <p class="text-base md:text-lg text-center">{siteContent.about_history_description?.[locale] || m.about_history_description()}</p>
+                    <h3 class="text-xl md:text-2xl font-bold text-center pb-4 w-full">{m.about_anchor_title()}</h3>
+                    <p class="text-base md:text-lg text-center font-roboto">{siteContent.about_anchor_description?.[locale]}</p>
                 </div>
                 <div class="flex flex-col items-center justify-center w-full md:w-3/4">
-                    <h3 class="text-xl md:text-2xl font-bold text-center pb-4 w-full">{m.about_mission_title()}</h3>
-                    <p class="text-base md:text-lg text-center">{siteContent.about_mission_description?.[locale] || m.about_mission_description()}</p>
+                    <h3 class="text-xl md:text-2xl font-bold text-center pb-4 w-full">{m.about_independance_title()}</h3>
+                    <p class="text-base md:text-lg text-center font-roboto">{siteContent.about_independance_description?.[locale]}</p>
                 </div>
             </div>
         {/if}

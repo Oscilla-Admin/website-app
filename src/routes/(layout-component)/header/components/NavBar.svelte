@@ -14,6 +14,8 @@
     import { page } from '$app/state';
     import { COLORS } from '$lib/utils/colors';
 
+    let { isTransparent = false }: { isTransparent?: boolean } = $props();
+
     let isMenuOpen = $state(false);
     let contactEmail = $state('');
     let activeSection = $state('accueil');
@@ -108,29 +110,29 @@
     }
 </script>
 
-<div class="flex flex-row items-center justify-end w-full gap-4">
+<div class="flex w-full flex-row items-center justify-end gap-2 xl:gap-4">
     <!-- Desktop Navigation -->
-	<nav class="hidden lg:flex flex-row items-center justify-end gap-8 xl:gap-12 mr-8">
-		<Button href="/#accueil" label={m.nav_home()} onClick={handleNavClick} active={activeSection === 'accueil'} />
-		<Button href="/#a-propos" label={m.nav_about()} onClick={handleNavClick} active={activeSection === 'a-propos'} />
-		<Button href="/#activites-references" label={m.nav_activities()} onClick={handleNavClick} active={activeSection === 'activites-references'} />
-		<Button href="/#outils-techniques" label={m.nav_technical()} onClick={handleNavClick} active={activeSection === 'outils-techniques'} />
-		<Button href="/#contact" label={m.nav_contact()} onClick={handleNavClick} active={activeSection === 'contact'} />
+	<nav class="absolute left-1/2 top-1/2 hidden h-10 -translate-x-1/2 -translate-y-1/2 lg:flex flex-row items-center justify-center gap-3 xl:gap-8">
+		<Button href="/#a-propos" label={m.nav_about()} onClick={handleNavClick} active={activeSection === 'a-propos'} {isTransparent} classOverride="!text-sm xl:!text-lg !font-black !min-w-fit xl:!min-w-[132px] !px-2 xl:!px-3 !py-1" />
+		<Button href="/#activites-references" label={m.nav_activities()} onClick={handleNavClick} active={activeSection === 'activites-references'} {isTransparent} classOverride="!text-sm xl:!text-lg !font-black !min-w-fit xl:!min-w-[132px] !px-2 xl:!px-3 !py-1" />
+		<Button href="/#outils-techniques" label={m.nav_technical()} onClick={handleNavClick} active={activeSection === 'outils-techniques'} {isTransparent} classOverride="!text-sm xl:!text-lg !font-black !min-w-fit xl:!min-w-[132px] !px-2 xl:!px-3 !py-1" />
+		<Button href="/#contact" label={m.nav_contact()} onClick={handleNavClick} active={activeSection === 'contact'} {isTransparent} classOverride="!text-sm xl:!text-lg !font-black !min-w-fit xl:!min-w-[132px] !px-2 xl:!px-3 !py-1" />
 	</nav>
 
     <!-- Desktop Actions -->
-	<div class="hidden lg:flex flex-row items-center justify-end gap-2">
-		<LanguageSelector />
-		<LinkIcon onclick={openMailto} icon={Mail} />
-		<LinkIcon href="https://linkedin.com/company/oscilla" icon={Linkedin} />
+	<div class="hidden lg:flex shrink-0 flex-row items-center justify-end gap-1.5" style="color: {isTransparent ? COLORS.white : COLORS.black};">
+		<LanguageSelector {isTransparent} />
+		<LinkIcon onclick={openMailto} icon={Mail} {isTransparent} size={24} />
+		<LinkIcon href="https://linkedin.com/company/oscilla" icon={Linkedin} {isTransparent} size={24} />
 	</div>
 
     <!-- Mobile Menu Button -->
     <div class="lg:hidden flex items-center gap-4">
-        <LanguageSelector />
+        <LanguageSelector {isTransparent} />
         <button 
             onclick={toggleMenu}
-            class="p-2 text-gray-600 hover:text-gray-900 transition-colors z-50"
+            class="p-2 transition-colors z-50 cursor-pointer"
+            style="color: {isTransparent ? COLORS.white : COLORS.black};"
             aria-label="Toggle menu"
         >
             {#if isMenuOpen}
@@ -157,7 +159,6 @@
         transition:fly={{ x: 256, duration: 300 }}
     >
         <nav class="flex flex-col gap-6 items-start">
-            <a href="/#accueil" onclick={handleNavClick} class="text-lg font-medium hover:text-primary transition-colors w-full text-left flex justify-start" style="text-align: left; text-justify: none; color: {activeSection === 'accueil' ? COLORS.primary : ''}">{m.nav_home()}</a>
             <a href="/#a-propos" onclick={handleNavClick} class="text-lg font-medium hover:text-primary transition-colors w-full text-left flex justify-start" style="text-align: left; text-justify: none; color: {activeSection === 'a-propos' ? COLORS.primary : ''}">{m.nav_about()}</a>
             <a href="/#activites-references" onclick={handleNavClick} class="text-lg font-medium hover:text-primary transition-colors w-full text-left flex justify-start" style="text-align: left; text-justify: none; color: {activeSection === 'activites-references' ? COLORS.primary : ''}">{m.nav_activities()}</a>
             <a href="/#outils-techniques" onclick={handleNavClick} class="text-lg font-medium hover:text-primary transition-colors w-full text-left flex justify-start" style="text-align: left; text-justify: none; color: {activeSection === 'outils-techniques' ? COLORS.primary : ''}">{m.nav_technical()}</a>
