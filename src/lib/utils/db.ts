@@ -1,4 +1,4 @@
-import { pb } from './pocketbase';
+import { getPocketBaseFileUrl, pb } from './pocketbase';
 
 export async function getActivities() {
     try {
@@ -25,7 +25,7 @@ export async function getActivities() {
                 en: record.description_en || '',
                 ca: record.description_ca || ''
             },
-            image: record.image ? pb.files.getURL(record, record.image) : '',
+            image: record.image ? getPocketBaseFileUrl(record, record.image) : '',
             iconName: record.iconName || 'Waves'
         }));
     } catch (e) {
@@ -52,7 +52,7 @@ export async function getProjects() {
             en: record.description_en,
             ca: record.description_ca
         },
-        image: pb.files.getURL(record, record.image),
+        image: record.image ? getPocketBaseFileUrl(record, record.image) : '',
         activityId: record.activity
     }));
 }
@@ -75,7 +75,7 @@ export async function getTechnicalTools() {
                 en: record.description_en || '',
                 ca: record.description_ca || ''
             },
-            image: record.image ? pb.files.getURL(record, record.image) : '',
+            image: record.image ? getPocketBaseFileUrl(record, record.image) : '',
             iconName: record.iconName || 'Hammer'
         }));
     } catch (e) {
@@ -101,7 +101,7 @@ export async function getProjectById(id: string) {
             en: record.description_en,
             ca: record.description_ca
         },
-        image: pb.files.getURL(record, record.image),
+        image: record.image ? getPocketBaseFileUrl(record, record.image) : '',
         activityId: record.activity,
         activity: record.expand?.activity ? {
             id: record.expand.activity.id,
