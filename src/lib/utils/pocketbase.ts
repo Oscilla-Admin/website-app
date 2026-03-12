@@ -1,7 +1,7 @@
 import PocketBase from 'pocketbase';
-import { PB_URL } from '$env/static/private';
+import { env } from '$env/dynamic/private';
 
-export const pb = new PocketBase(PB_URL);
+export const pb = new PocketBase(env.PB_URL);
 
 // Force la déconnexion au démarrage pour nettoyer tout vieux token admin/user
 pb.authStore.clear();
