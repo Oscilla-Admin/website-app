@@ -3,7 +3,7 @@
 	import ActivitiesAndProjects from "./components/sections/Activities_and_projects.svelte";
 	import Contacts from "./components/sections/Contacts.svelte";
 	import Hero from "./components/sections/Hero.svelte";
-	import LinkedinActuality from "./components/sections/LinkedinActuality.svelte";
+	import Actuality from "./components/sections/Actuality.svelte";
 	import TechnicalsTools from "./components/sections/Technicals_tools.svelte";
 	import SoundWave3D from "$lib/components/SoundWave3D.svelte";
 	import * as m from '$paraglide/messages.js';
@@ -28,8 +28,9 @@
 	<div use:reveal class="reveal w-full flex justify-center">
 		<About siteContent={data.siteContent} />
 	</div>
+	<SoundWave3D />
 	<div use:reveal class="reveal w-full flex justify-center">
-		<LinkedinActuality />
+		<Actuality news={data.news} />
 	</div>
 	<SoundWave3D />
 	<div use:reveal class="reveal w-full flex justify-center">

@@ -6,23 +6,26 @@ import type { PageServerLoad } from './$types';
 export const load: PageServerLoad = async ({ fetch }) => {
     try {
         // On appelle nos propres routes API SvelteKit au lieu de taper directement dans la DB
-        const [resActivities, resTools, resProjects, resContent] = await Promise.all([
+        const [resActivities, resTools, resProjects, resContent, resNews] = await Promise.all([
             fetch('/api/activities'),
             fetch('/api/technical-tools'),
             fetch('/api/projects'),
-            fetch('/api/site-content')
+            fetch('/api/site-content'),
+            fetch('/api/news')
         ]);
 
         const activities = resActivities.ok ? await resActivities.json() : staticActivities;
         const technicalTools = resTools.ok ? await resTools.json() : staticTechnicalTools;
         const projects = resProjects.ok ? await resProjects.json() : staticProjects;
         const siteContent = resContent.ok ? await resContent.json() : {};
+        const news = resNews.ok ? await resNews.json() : [];
 
         return {
             activities,
             technicalTools,
             projects,
-            siteContent
+            siteContent,
+            news
         };
     } catch (error) {
         console.error("API fetch error:", error);
@@ -30,7 +33,8 @@ export const load: PageServerLoad = async ({ fetch }) => {
             activities: staticActivities,
             technicalTools: staticTechnicalTools,
             projects: staticProjects,
-            siteContent: {}
+            siteContent: {},
+            news: []
         };
     }
 };

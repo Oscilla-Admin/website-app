@@ -114,6 +114,25 @@ export async function getProjectById(id: string) {
     };
 }
 
+export async function getNews() {
+    try {
+        const records = await pb.collection('news').getFullList({
+            sort: '-created',
+        });
+
+        return records.map(record => ({
+            id: record.id,
+            title: record.title || null,
+            content: record.content || '',
+            images: record.image?.length ? record.image.map((img: string) => getPocketBaseFileUrl(record, img)) : [],
+            created: record.created,
+        }));
+    } catch (e) {
+        console.error("[DB] Erreur getNews:", e);
+        return [];
+    }
+}
+
 export async function getSiteContent() {
     const records = await pb.collection('site_content').getFullList();
     
