@@ -27,17 +27,19 @@
             <CarouselCard title={activity.title[locale]} iconName={activity.iconName} image={activity.image} />
         {/snippet}
         {#snippet popupContent(activity)}
-            <div class="space-y-6 md:space-y-8 flex flex-col md:flex-row gap-6 md:gap-12 w-full h-full">
+            <div class="flex-1 min-h-0 flex flex-col gap-6">
                 {#if activity.image}
-                    <div class="w-full md:w-1/2 h-64 md:h-[500px] overflow-hidden rounded-xl flex-shrink-0 bg-transparent flex items-center justify-center">
-                        <img src={activity.image} alt={activity.title[locale]} class="w-full h-full object-contain object-center" />
+                    <div class="shrink-0 w-full h-64 md:w-1/2 md:h-80 md:mx-auto overflow-hidden rounded-xl flex items-center justify-center">
+                        <img src={activity.image} alt={activity.title[locale]} class="w-full h-full object-contain md:object-cover object-center" />
                     </div>
                 {/if}
-                <div class="w-full md:w-1/2 flex flex-col justify-start">
+                <div class="flex-1 min-h-0 flex flex-col justify-start md:items-center">
                     {#if activity.subtitle?.[locale]}
-                        <h3 class="text-xl md:text-2xl font-bold mb-4">{activity.subtitle[locale]}</h3>
+                        <h3 class="shrink-0 text-xl md:text-2xl font-bold mb-4">{activity.subtitle[locale]}</h3>
                     {/if}
-                    <p class="text-gray-600 text-base md:text-lg leading-relaxed whitespace-pre-wrap font-roboto">{activity.description[locale]}</p>
+                    <div class="flex-1 min-h-0 overflow-y-auto w-full">
+                        <p class="text-gray-600 text-base md:text-lg leading-relaxed whitespace-pre-wrap font-roboto">{activity.description[locale]}</p>
+                    </div>
                 </div>
 
                 <!-- {#if getProjectsByActivity(activity.id).length > 0}

@@ -24,14 +24,18 @@
                 <CarouselCard title={tool.title[locale]} iconName={tool.iconName} image={tool.image} />
             {/snippet}
             {#snippet popupContent(tool)}
-                <div class="space-y-6 md:space-y-8 flex flex-col md:flex-row gap-6 md:gap-12 w-full h-full">
+                <div class="flex-1 min-h-0 flex flex-col gap-6">
                     {#if tool.image}
-                        <div class="w-full md:w-1/2 h-64 md:h-[500px] overflow-hidden rounded-xl flex-shrink-0 bg-transparent flex items-center justify-center">
-                            <img src={tool.image} alt={tool.title[locale]} class="w-full h-full object-contain object-center" />
+                        <div class="shrink-0 w-full h-64 md:w-1/2 md:h-80 md:mx-auto overflow-hidden rounded-xl flex items-center justify-center">
+                            <img src={tool.image} alt={tool.title[locale]} class="w-full h-full object-contain md:object-cover object-center" />
                         </div>
                     {/if}
-                    <div class="w-full md:w-1/2 flex flex-col justify-center">
-                        <p class="text-gray-600 text-base md:text-lg leading-relaxed whitespace-pre-wrap font-roboto">{tool.description[locale]}</p>
+                    <div class="flex-1 min-h-0 flex flex-col justify-start md:items-center">
+                        <div class="flex-1 min-h-0 overflow-y-auto w-full">
+                            <div class="min-h-full flex flex-col justify-center">
+                                <p class="text-gray-600 text-center md:text-lg leading-relaxed whitespace-pre-wrap font-roboto">{tool.description[locale]}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             {/snippet}

@@ -36,7 +36,7 @@
         transition:fade={{ duration: 600 }}
     >
         <div 
-            class="bg-white p-6 md:p-10 rounded-2xl shadow-2xl max-w-[95%] md:max-w-[85vw] lg:max-w-[1200px] max-h-[98vh] w-full min-h-[50vh] relative cursor-default z-[10001] flex flex-col"
+            class="bg-white p-6 md:p-10 rounded-2xl shadow-2xl max-w-[95%] md:max-w-[85vw] lg:max-w-[1200px] h-[80vh] w-full relative cursor-default z-[10001] flex flex-col"
             onclick={(e) => e.stopPropagation()}
             role="dialog"
             aria-modal="true"
@@ -60,7 +60,7 @@
                 </button>
             </div>
             
-            <div class="overflow-y-auto pr-2 custom-scrollbar">
+            <div class="flex-1 min-h-0 overflow-hidden flex flex-col">
                 {#if $popupStore.content && $popupStore.data}
                     {@render $popupStore.content($popupStore.data)}
                 {/if}

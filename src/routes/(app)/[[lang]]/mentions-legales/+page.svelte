@@ -25,7 +25,7 @@
 	<meta name="description" content={m.legal_meta_description()} />
 </svelte:head>
 
-<section class="w-full pt-36 pb-20 px-4 md:px-8 mt-24" style={`background-color: ${COLORS.grayLight};`}>
+<section class="w-full pt-25 pb-25 px-4 md:px-8 mt-24" style={`background-color: ${COLORS.grayLight};`}>
 	<div class="container mx-auto max-w-5xl">
 		<div class="overflow-hidden rounded-[28px] border border-black/5 bg-white shadow-sm">
 			<div class="border-b border-black/5 px-6 py-10 md:px-12 md:py-14" style={`background-color: ${COLORS.white};`}>
