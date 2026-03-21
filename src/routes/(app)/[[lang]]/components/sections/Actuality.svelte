@@ -1,7 +1,7 @@
 <script lang="ts">
     import { COLORS } from '$lib/utils/colors';
     import * as m from '$paraglide/messages.js';
-    import ActualityNews from './actuality_news.svelte';
+    import ActualityNews from './Actuality_news.svelte';
 
     interface NewsItem {
         id: string;
