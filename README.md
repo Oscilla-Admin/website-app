@@ -9,7 +9,7 @@ Site vitrine professionnel pour **Oscilla**, bureau d'études en acoustique et i
 - **Backend / CMS** : [PocketBase](https://pocketbase.io/) (données dynamiques : actualités, projets, activités)
 - **Internationalisation** : [Paraglide-JS](https://inlang.com/m/gerre34r/library-inlang-paraglideJs) (Français, Anglais, Catalan)
 - **Icônes** : [Lucide Svelte](https://lucide.dev/)
-- **Déploiement** : [Netlify](https://www.netlify.com/)
+- **Déploiement** : [Infomaniak](https://www.infomaniak.com/)
 
 ## 🎨 Fonctionnalités Clés
 
