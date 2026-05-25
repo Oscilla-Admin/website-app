@@ -20,6 +20,7 @@
 	<meta property="og:description" content="Oscilla, bureau d'études acoustique indépendant à Perpignan. Études réglementaires, modélisation, mesures. Intervention dans les Pyrénées-Orientales (66) et Occitanie." />
 	<meta property="og:type" content="website" />
 	<meta property="og:image" content="/tempLogo.png" />
+	<link rel="canonical" href="https://oscilla.fr/" />
 </svelte:head>
 
 <div class="flex flex-col items-center justify-center">
