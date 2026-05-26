@@ -1,11 +1,11 @@
 {
 	"$schema": "https://inlang.com/schema/inlang-message-format",
-	"nav_home": "Inici",
+	"nav_home": "Oficina d'estudis acústics - Perpinyà (66)",
 	"nav_about": "Sobre nosaltres",
 	"nav_activities": "Activitats i Referències",
 	"nav_technical": "Eines tècniques",
 	"nav_contact": "Contacte",
-	"hero_tagline": "L'assessorament en acústica i aïllament acústic.",
+	"hero_tagline": "Oscilla, oficina d'estudis acústics independent a Perpinyà. Estudis reglamentaris, modelització i mesures. Intervenció als Pirineus Orientals (66) i a Occitània.",
 	"about_title": "Sobre nosaltres",
 	"about_description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
 	"about_description_2": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",

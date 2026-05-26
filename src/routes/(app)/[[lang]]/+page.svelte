@@ -13,11 +13,11 @@
 </script>
 
 <svelte:head>
-	<title>Oscilla | Bureau d'études acoustique - Perpignan (66)</title>
-	<meta name="description" content="Oscilla, bureau d'études acoustique indépendant à Perpignan. Études réglementaires, modélisation, mesures. Intervention dans les Pyrénées-Orientales (66) et Occitanie." />
+	<title>{m.nav_home()} | Oscilla</title>
+	<meta name="description" content={m.hero_tagline()} />
 	<!-- OpenGraph -->
-	<meta property="og:title" content="Oscilla | Bureau d'études acoustique - Perpignan (66)" />
-	<meta property="og:description" content="Oscilla, bureau d'études acoustique indépendant à Perpignan. Études réglementaires, modélisation, mesures. Intervention dans les Pyrénées-Orientales (66) et Occitanie." />
+	<meta property="og:title" content="Oscilla | Expertise Acoustique" />
+	<meta property="og:description" content={m.hero_tagline()} />
 	<meta property="og:type" content="website" />
 	<meta property="og:image" content="/tempLogo.png" />
 	<link rel="canonical" href="https://oscilla.fr/" />

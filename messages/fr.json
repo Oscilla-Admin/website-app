@@ -1,11 +1,11 @@
 {
 	"$schema": "https://inlang.com/schema/inlang-message-format",
-	"nav_home": "Accueil",
+	"nav_home": "Bureau d'études acoustique - Perpignan (66)",
 	"nav_about": "À propos",
 	"nav_activities": "Activités et Références",
 	"nav_technical": "Moyens",
 	"nav_contact": "Contact",
-	"hero_tagline": "Le conseil en acoustique et en isolation phonique.",
+	"hero_tagline": "Oscilla, bureau d'études acoustique indépendant à Perpignan. Études réglementaires, modélisation, mesures. Intervention dans les Pyrénées-Orientales (66) et Occitanie.",
 	"about_title": "Notre Approche",
 	"about_description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
 	"about_description_2": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
