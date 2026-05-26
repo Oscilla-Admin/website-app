@@ -5,10 +5,10 @@
 
 {#if href}
 <a {href} class={`${size} ${classOverride}`}>
-    <img {src} {alt} class="w-full h-full object-contain" />
+    <img {src} {alt} class="w-full h-full object-contain" fetchpriority="high" />
 </a>
 {:else}
-<div class={`${size} ${classOverride}`} >
-    <img {src} {alt} class="w-full h-full object-contain" />
+<div class={`${size} ${classOverride}`}>
+    <img {src} {alt} class="w-full h-full object-contain" fetchpriority="high" />
 </div>
 {/if}
