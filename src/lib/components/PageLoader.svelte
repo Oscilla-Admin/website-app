@@ -3,7 +3,7 @@
 	import { drawSoundWave, type WaveOptions } from '$lib/utils/waves';
 	import * as m from '$paraglide/messages.js';
 
-	let canvas: HTMLCanvasElement; // Plus de $state ici
+	let canvas = $state<HTMLCanvasElement>();
 	let { active = false } = $props();
 
 	const options: WaveOptions = {

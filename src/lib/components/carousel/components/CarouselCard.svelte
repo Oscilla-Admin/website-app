@@ -67,7 +67,7 @@
         {@render cardContent()}
     </a>
 {:else}
-    <div {onclick} class={cardClass}>
+    <button type="button" {onclick} class="{cardClass} w-full text-left">
         {@render cardContent()}
-    </div>
+    </button>
 {/if}

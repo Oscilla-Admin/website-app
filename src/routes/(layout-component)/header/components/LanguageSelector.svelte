@@ -57,6 +57,7 @@
 		<div 
 			class="fixed md:absolute top-[60px] md:top-full right-4 md:right-0 rounded-lg shadow-xl border overflow-hidden z-[100] min-w-[140px] {isTransparent ? 'bg-black/60 backdrop-blur-md border-white/10' : 'bg-white border-gray-200'}"
 			onclick={(e) => e.stopPropagation()}
+			role="presentation"
 		>
 			{#each activeLocales as locale}
 				<button
