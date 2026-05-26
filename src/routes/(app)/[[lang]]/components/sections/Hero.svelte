@@ -21,7 +21,7 @@
 <div
 	id="accueil"
 	class="relative flex min-h-screen flex-col items-center justify-center bg-cover bg-center bg-no-repeat w-full transition-opacity duration-700 ease-out overflow-hidden"
-	style="background-image: url('/hero_bg.png'); background-color: #222222; background-blend-mode: multiply; opacity: {opacity}; filter: contrast(0.90) brightness(1.35);"
+	style="background-image: url('/hero_bg.webp'); background-color: #222222; background-blend-mode: multiply; opacity: {opacity}; filter: contrast(0.90) brightness(1.35);"
 >
 	<div class="absolute inset-0 bg-black/22 pointer-events-none z-[5]"></div>
 	
