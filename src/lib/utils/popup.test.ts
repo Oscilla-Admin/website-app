@@ -49,6 +49,10 @@ describe('popup store', () => {
 
 		vi.advanceTimersByTime(600);
 
-		expect(get(popupStore)).toMatchObject({ isOpen: true, title: 'Second', data: { id: 'second' } });
+		expect(get(popupStore)).toMatchObject({
+			isOpen: true,
+			title: 'Second',
+			data: { id: 'second' }
+		});
 	});
 });

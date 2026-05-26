@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { COLORS } from "$lib/utils/colors";
-	import { onMount } from "svelte";
-	import { getContactEmail } from "$lib/utils/contact";
+	import { COLORS } from '$lib/utils/colors';
+	import { onMount } from 'svelte';
+	import { getContactEmail } from '$lib/utils/contact';
 	import * as m from '$paraglide/messages.js';
 	import { getLocale } from '$paraglide/runtime.js';
 
@@ -12,8 +12,8 @@
 	let isLoading = $state(true);
 
 	onMount(async () => {
-        contactEmail = await getContactEmail();
-        isLoading = false;
+		contactEmail = await getContactEmail();
+		isLoading = false;
 	});
 
 	function openMailto() {
@@ -23,20 +23,22 @@
 	}
 </script>
 
-<section id="contact" class="flex flex-col items-center justify-center w-full py-12 md:py-16 px-6 md:px-8 gap-6 container mx-auto scroll-mt-32">
-	<h2 class="text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-center">
+<section
+	id="contact"
+	class="container mx-auto flex w-full scroll-mt-32 flex-col items-center justify-center gap-6 px-6 py-12 md:px-8 md:py-16"
+>
+	<h2 class="mb-6 text-center text-3xl font-bold md:mb-8 md:text-4xl">
 		{siteContent.contact_title?.[locale] || m.contact_title()}
 	</h2>
-	<p class="text-base md:text-lg text-center max-w-2xl">
+	<p class="max-w-2xl text-center text-base md:text-lg">
 		{siteContent.contact_description?.[locale] || m.contact_description()}
 	</p>
 
 	<button
 		onclick={openMailto}
 		disabled={!contactEmail}
-		class="p-4 px-8 rounded-md text-white font-medium transition-opacity hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed hover:cursor-pointer"
+		class="rounded-md p-4 px-8 font-medium text-white transition-opacity hover:cursor-pointer hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
 		style="background-color: {COLORS.primary};"
-
 	>
 		{#if isLoading}
 			{m.contact_loading()}

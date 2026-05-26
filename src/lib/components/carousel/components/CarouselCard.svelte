@@ -13,61 +13,80 @@
 	import Monitor from 'lucide-svelte/icons/monitor';
 	import Camera from 'lucide-svelte/icons/camera';
 
-    const icons = { Waves, HandMetal, Briefcase, Factory, Music, Activity, FileCheck, Gauge, Speaker, Hammer, Monitor, Camera };
+	const icons = {
+		Waves,
+		HandMetal,
+		Briefcase,
+		Factory,
+		Music,
+		Activity,
+		FileCheck,
+		Gauge,
+		Speaker,
+		Hammer,
+		Monitor,
+		Camera
+	};
 
-    let {
-        title = '',
-        description = '',
-        image = '',
-        iconName = '',
-        href = '',
-        onclick = null
-    } = $props();
+	let {
+		title = '',
+		description = '',
+		image = '',
+		iconName = '',
+		href = '',
+		onclick = null
+	} = $props();
 
-    let IconComponent = $derived(iconName ? icons[iconName as keyof typeof icons] : null);
+	let IconComponent = $derived(iconName ? icons[iconName as keyof typeof icons] : null);
 
-    const cardClass = "group relative flex flex-col h-full bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300";
+	const cardClass =
+		'group relative flex flex-col h-full bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300';
 </script>
 
 {#snippet cardContent()}
-    <!-- Zone Image ou Icône (hauteur fixe) -->
-    <div class="h-48 bg-gray-50 flex items-center justify-center overflow-hidden">
-        {#if image}
-            <img
-                src={image}
-                alt={title}
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-            />
-        {:else if IconComponent}
-            <div class="text-blue-600 group-hover:scale-110 transition-transform duration-300">
-                <IconComponent size={64} strokeWidth={1} />
-            </div>
-        {:else}
-            <!-- Placeholder si rien -->
-            <div class="w-16 h-16 bg-gray-200 rounded-full"></div>
-        {/if}
-    </div>
+	<!-- Zone Image ou Icône (hauteur fixe) -->
+	<div class="flex h-48 items-center justify-center overflow-hidden bg-gray-50">
+		{#if image}
+			<img
+				src={image}
+				alt={title}
+				class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+			/>
+		{:else if IconComponent}
+			<div class="text-blue-600 transition-transform duration-300 group-hover:scale-110">
+				<IconComponent size={64} strokeWidth={1} />
+			</div>
+		{:else}
+			<!-- Placeholder si rien -->
+			<div class="h-16 w-16 rounded-full bg-gray-200"></div>
+		{/if}
+	</div>
 
-    <!-- Zone Contenu -->
-    <div class="p-4 md:p-6 flex-1 flex flex-col items-start">
-        <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-2 group-hover:text-[var(--hover-color)] transition-colors text-left" style="--hover-color: {COLORS.primary}">
-            {title}
-        </h3>
+	<!-- Zone Contenu -->
+	<div class="flex flex-1 flex-col items-start p-4 md:p-6">
+		<h3
+			class="mb-2 text-left text-lg font-bold text-gray-900 transition-colors group-hover:text-[var(--hover-color)] md:text-xl"
+			style="--hover-color: {COLORS.primary}"
+		>
+			{title}
+		</h3>
 
-        {#if description}
-            <p class="text-gray-600 text-xs md:text-sm line-clamp-3 text-left whitespace-pre-wrap font-roboto">
-                {description}
-            </p>
-        {/if}
-    </div>
+		{#if description}
+			<p
+				class="line-clamp-3 text-left font-roboto text-xs whitespace-pre-wrap text-gray-600 md:text-sm"
+			>
+				{description}
+			</p>
+		{/if}
+	</div>
 {/snippet}
 
 {#if href}
-    <a {href} {onclick} class="{cardClass} cursor-pointer no-underline">
-        {@render cardContent()}
-    </a>
+	<a {href} {onclick} class="{cardClass} cursor-pointer no-underline">
+		{@render cardContent()}
+	</a>
 {:else}
-    <button type="button" {onclick} class="{cardClass} w-full text-left">
-        {@render cardContent()}
-    </button>
+	<button type="button" {onclick} class="{cardClass} w-full text-left">
+		{@render cardContent()}
+	</button>
 {/if}

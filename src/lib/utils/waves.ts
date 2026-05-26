@@ -40,7 +40,10 @@ export function drawSoundWave(
 			const perspective = Math.cos(time * 0.3 + i * 0.2);
 
 			const amplitude = options.baseAmplitude + intensity * options.amplitudeMultiplier;
-			const y = h / 2 + wave * amplitude * perspective + Math.sin(time * 0.5 + i) * (options.baseAmplitude / 4);
+			const y =
+				h / 2 +
+				wave * amplitude * perspective +
+				Math.sin(time * 0.5 + i) * (options.baseAmplitude / 4);
 
 			if (j === 0) ctx.moveTo(x, y);
 			else ctx.lineTo(x, y);

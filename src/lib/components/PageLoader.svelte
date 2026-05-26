@@ -21,7 +21,7 @@
 
 	$effect(() => {
 		if (!active || !canvas) return;
-		
+
 		const ctx = canvas.getContext('2d', { alpha: true });
 		if (!ctx) return;
 
@@ -59,12 +59,14 @@
 </script>
 
 {#if active}
-	<div 
-		class="fixed inset-0 z-[9999] bg-white/60 backdrop-blur-md flex items-center justify-center pointer-events-none opacity-100"
+	<div
+		class="pointer-events-none fixed inset-0 z-[9999] flex items-center justify-center bg-white/60 opacity-100 backdrop-blur-md"
 		transition:fade={{ duration: 600 }}
 	>
-		<canvas bind:this={canvas} class="w-full h-full"></canvas>
-		<div class="absolute bottom-20 left-1/2 -translate-x-1/2 text-primary font-medium tracking-widest uppercase text-sm">
+		<canvas bind:this={canvas} class="h-full w-full"></canvas>
+		<div
+			class="text-primary absolute bottom-20 left-1/2 -translate-x-1/2 text-sm font-medium tracking-widest uppercase"
+		>
 			{m.contact_loading()}
 		</div>
 	</div>

@@ -45,7 +45,9 @@ describe('PocketBase file proxy route', () => {
 			fetch: fetchMock
 		} as never);
 
-		expect(fetchMock).toHaveBeenCalledWith('https://pocketbase.oscilla.test/api/files/col/rec/file.jpg');
+		expect(fetchMock).toHaveBeenCalledWith(
+			'https://pocketbase.oscilla.test/api/files/col/rec/file.jpg'
+		);
 		expect(response.status).toBe(200);
 		expect(response.headers.get('content-type')).toBe('image/jpeg');
 		expect(response.headers.get('cache-control')).toBe('public, max-age=3600');

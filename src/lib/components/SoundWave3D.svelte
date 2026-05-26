@@ -68,6 +68,8 @@
 
 <svelte:window bind:scrollY />
 
-<div class="w-full h-48 flex items-center justify-center overflow-hidden opacity-70 transition-opacity duration-500">
-	<canvas bind:this={canvas} class="w-full h-full"></canvas>
+<div
+	class="flex h-48 w-full items-center justify-center overflow-hidden opacity-70 transition-opacity duration-500"
+>
+	<canvas bind:this={canvas} class="h-full w-full"></canvas>
 </div>

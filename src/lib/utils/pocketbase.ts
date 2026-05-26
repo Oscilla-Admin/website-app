@@ -3,8 +3,11 @@ import { env } from '$env/dynamic/private';
 
 export const pb = new PocketBase(env.PB_URL);
 
-export function getPocketBaseFileUrl(record: { collectionId: string; id: string }, filename: string) {
-    return `/api/pb-files/${record.collectionId}/${record.id}/${filename}`;
+export function getPocketBaseFileUrl(
+	record: { collectionId: string; id: string },
+	filename: string
+) {
+	return `/api/pb-files/${record.collectionId}/${record.id}/${filename}`;
 }
 
 // Force la déconnexion au démarrage pour nettoyer tout vieux token admin/user

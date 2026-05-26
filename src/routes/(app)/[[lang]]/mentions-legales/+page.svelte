@@ -25,15 +25,27 @@
 	<meta name="description" content={m.legal_meta_description()} />
 </svelte:head>
 
-<section class="w-full pt-25 pb-25 px-4 md:px-8 mt-24" style={`background-color: ${COLORS.grayLight};`}>
+<section
+	class="mt-24 w-full px-4 pt-25 pb-25 md:px-8"
+	style={`background-color: ${COLORS.grayLight};`}
+>
 	<div class="container mx-auto max-w-5xl">
 		<div class="overflow-hidden rounded-[28px] border border-black/5 bg-white shadow-sm">
-			<div class="border-b border-black/5 px-6 py-10 md:px-12 md:py-14" style={`background-color: ${COLORS.white};`}>
-				<p class="mb-3 text-left text-sm tracking-[0.2em] text-gray-500" style="font-family: var(--font-roboto); text-transform: none;">
+			<div
+				class="border-b border-black/5 px-6 py-10 md:px-12 md:py-14"
+				style={`background-color: ${COLORS.white};`}
+			>
+				<p
+					class="mb-3 text-left text-sm tracking-[0.2em] text-gray-500"
+					style="font-family: var(--font-roboto); text-transform: none;"
+				>
 					{m.legal_brand()}
 				</p>
 				<h1 class="text-left text-3xl font-semibold md:text-5xl">{m.legal_title()}</h1>
-				<p class="mt-4 text-left normal-case leading-relaxed text-gray-600" style="font-family: var(--font-roboto); text-transform: none;">
+				<p
+					class="mt-4 text-left leading-relaxed text-gray-600 normal-case"
+					style="font-family: var(--font-roboto); text-transform: none;"
+				>
 					{m.legal_intro()}
 				</p>
 			</div>
@@ -41,22 +53,33 @@
 			<div class="legal-content space-y-10 px-6 py-10 md:px-12 md:py-12">
 				<section class="space-y-4">
 					<h2 class="text-left text-2xl md:text-3xl">{m.legal_section_site_publishing()}</h2>
-					<div class="space-y-4 text-left normal-case leading-relaxed text-gray-700" style="font-family: var(--font-roboto); text-transform: none;">
+					<div
+						class="space-y-4 text-left leading-relaxed text-gray-700 normal-case"
+						style="font-family: var(--font-roboto); text-transform: none;"
+					>
 						<p>
 							{m.legal_site_intro_before_link()}
-							<a class="underline underline-offset-4" href="https://oscilla.fr" target="_blank" rel="noreferrer">https://oscilla.fr</a>,
+							<a
+								class="underline underline-offset-4"
+								href="https://oscilla.fr"
+								target="_blank"
+								rel="noreferrer">https://oscilla.fr</a
+							>,
 							{m.legal_site_intro_after_link()}
 						</p>
 						<p>
 							{m.legal_site_editor_text()}
 						</p>
-						<ul class="list-disc space-y-3 pl-5 marker:text-[color:var(--marker-color)]" style={`--marker-color: ${COLORS.primary};`}>
+						<ul
+							class="list-disc space-y-3 pl-5 marker:text-[color:var(--marker-color)]"
+							style={`--marker-color: ${COLORS.primary};`}
+						>
 							<li>{m.legal_vat_number()}</li>
 							<li>
 								{m.legal_contact_label()}
 								<button
 									type="button"
-									class="font-roboto normal-case text-[color:var(--link-color)] underline underline-offset-4 hover:opacity-80 cursor-pointer"
+									class="cursor-pointer font-roboto text-[color:var(--link-color)] normal-case underline underline-offset-4 hover:opacity-80"
 									style={`--link-color: ${COLORS.primary};`}
 									onclick={openContactMailto}
 								>
@@ -70,20 +93,31 @@
 
 				<section class="space-y-4">
 					<h2 class="text-left text-2xl md:text-3xl">{m.legal_section_hosting()}</h2>
-					<div class="space-y-4 text-left normal-case leading-relaxed text-gray-700" style="font-family: var(--font-roboto); text-transform: none;">
+					<div
+						class="space-y-4 text-left leading-relaxed text-gray-700 normal-case"
+						style="font-family: var(--font-roboto); text-transform: none;"
+					>
 						<p>
 							{m.legal_hosting_text()}
 						</p>
 						<p>
 							{m.legal_hosting_contact_before_link()}
-							<a class="underline underline-offset-4" href="https://www.infomaniak.com" target="_blank" rel="noreferrer">www.infomaniak.com</a>.
+							<a
+								class="underline underline-offset-4"
+								href="https://www.infomaniak.com"
+								target="_blank"
+								rel="noreferrer">www.infomaniak.com</a
+							>.
 						</p>
 					</div>
 				</section>
 
 				<section class="space-y-4">
 					<h2 class="text-left text-2xl md:text-3xl">{m.legal_section_ip()}</h2>
-					<div class="space-y-4 text-left normal-case leading-relaxed text-gray-700" style="font-family: var(--font-roboto); text-transform: none;">
+					<div
+						class="space-y-4 text-left leading-relaxed text-gray-700 normal-case"
+						style="font-family: var(--font-roboto); text-transform: none;"
+					>
 						<p>
 							{m.legal_ip_text_1()}
 						</p>
@@ -95,7 +129,10 @@
 
 				<section class="space-y-4">
 					<h2 class="text-left text-2xl md:text-3xl">{m.legal_section_personal_data()}</h2>
-					<div class="space-y-4 text-left normal-case leading-relaxed text-gray-700" style="font-family: var(--font-roboto); text-transform: none;">
+					<div
+						class="space-y-4 text-left leading-relaxed text-gray-700 normal-case"
+						style="font-family: var(--font-roboto); text-transform: none;"
+					>
 						<p>
 							{m.legal_personal_data_text_1()}
 						</p>
@@ -103,7 +140,7 @@
 							{m.legal_personal_data_text_before_cta()}
 							<button
 								type="button"
-								class="font-roboto normal-case text-[color:var(--link-color)] underline underline-offset-4 hover:opacity-80 cursor-pointer"
+								class="cursor-pointer font-roboto text-[color:var(--link-color)] normal-case underline underline-offset-4 hover:opacity-80"
 								style={`--link-color: ${COLORS.primary};`}
 								onclick={openContactMailto}
 							>
@@ -116,16 +153,29 @@
 
 				<section class="space-y-4">
 					<h2 class="text-left text-2xl md:text-3xl">{m.legal_section_applicable_law()}</h2>
-					<p class="text-left normal-case leading-relaxed text-gray-700" style="font-family: var(--font-roboto); text-transform: none;">
+					<p
+						class="text-left leading-relaxed text-gray-700 normal-case"
+						style="font-family: var(--font-roboto); text-transform: none;"
+					>
 						{m.legal_applicable_law_text()}
 					</p>
 				</section>
 
-				<div class="flex flex-col md:flex-row items-start md:items-center justify-start gap-2 md:gap-4 w-full pt-4 border-t border-black/5">
-					<div class="flex flex-row items-center justify-start md:justify-center gap-4 w-full">
-						<p class="text-left text-gray-500 text-[10px] md:text-sm font-roboto normal-case">{m.footer_developed_by()}</p>
-						<div class="flex flex-row items-center gap-4 shrink-0 scale-90 md:scale-100 origin-left">
-							<LinkIcon href="https://www.linkedin.com/in/timothée-nicolet-8b04a8329" icon={Linkedin} size={16} />
+				<div
+					class="flex w-full flex-col items-start justify-start gap-2 border-t border-black/5 pt-4 md:flex-row md:items-center md:gap-4"
+				>
+					<div class="flex w-full flex-row items-center justify-start gap-4 md:justify-center">
+						<p class="text-left font-roboto text-[10px] text-gray-500 normal-case md:text-sm">
+							{m.footer_developed_by()}
+						</p>
+						<div
+							class="flex shrink-0 origin-left scale-90 flex-row items-center gap-4 md:scale-100"
+						>
+							<LinkIcon
+								href="https://www.linkedin.com/in/timothée-nicolet-8b04a8329"
+								icon={Linkedin}
+								size={16}
+							/>
 							<LinkIcon href="https://github.com/TimBERNIC" icon={Github} size={16} />
 						</div>
 					</div>
