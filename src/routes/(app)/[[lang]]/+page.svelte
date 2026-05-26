@@ -13,11 +13,11 @@
 </script>
 
 <svelte:head>
-	<title>{m.nav_home()} | Oscilla</title>
-	<meta name="description" content={m.hero_tagline()} />
+	<title>{m.home_meta_title()}</title>
+	<meta name="description" content={m.home_meta_description()} />
 	<!-- OpenGraph -->
-	<meta property="og:title" content="Oscilla | Expertise Acoustique" />
-	<meta property="og:description" content={m.hero_tagline()} />
+	<meta property="og:title" content={m.home_meta_title()} />
+	<meta property="og:description" content={m.home_meta_description()} />
 	<meta property="og:type" content="website" />
 	<meta property="og:image" content="/tempLogo.png" />
 	<link rel="canonical" href="https://oscilla.fr/" />
