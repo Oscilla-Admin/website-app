@@ -22,6 +22,7 @@
 	let contactEmail = $state('');
 	const navItems = $derived([
 		{ href: '/a-propos', id: 'a-propos', label: m.nav_about() },
+		{ href: '/actualites', id: 'actualites', label: m.nav_actualities() },
 		{ href: '/activites-references', id: 'activites-references', label: m.nav_activities() },
 		{ href: '/outils-techniques', id: 'outils-techniques', label: m.nav_technical() },
 		{ href: '/contact', id: 'contact', label: m.nav_contact() }

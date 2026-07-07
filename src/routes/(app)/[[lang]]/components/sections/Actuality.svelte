@@ -24,7 +24,7 @@
 	}
 </script>
 
-<section id="actualites" class="relative w-full scroll-mt-32 overflow-x-hidden py-24">
+<section id="actualites" class="relative w-full scroll-mt-32 overflow-x-hidden pt-8 pb-24 md:pt-10">
 	<div class="absolute inset-0 bg-[var(--bg-color)]" style="--bg-color: {COLORS.grayLight};"></div>
 	<div
 		class="pointer-events-none absolute top-0 left-0 h-32 w-full bg-gradient-to-b from-white to-transparent"
@@ -33,9 +33,7 @@
 		class="pointer-events-none absolute bottom-0 left-0 h-32 w-full bg-gradient-to-t from-white to-transparent"
 	></div>
 
-	<div class="relative container mx-auto flex flex-col items-center gap-8 px-4 md:px-8">
-		<h2 class="text-center text-3xl font-bold md:text-4xl">{m.linkedin_actualities_title()}</h2>
-
+	<div class="relative container mx-auto flex flex-col items-center px-4 md:px-8">
 		{#if news.length === 0}
 			<div class="flex h-48 items-center justify-center text-lg text-gray-400">
 				Aucune actualité pour le moment.

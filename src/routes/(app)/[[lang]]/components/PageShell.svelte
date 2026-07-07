@@ -29,7 +29,7 @@
 		</div>
 	</section>
 
-	<div class="flex w-full justify-center pt-2 md:pt-4">
+	<div class="flex w-full flex-col items-center pt-2 md:pt-4">
 		{@render children()}
 	</div>
 </div>
