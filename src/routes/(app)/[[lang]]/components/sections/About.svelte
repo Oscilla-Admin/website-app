@@ -57,7 +57,7 @@
 			onClick={() => {
 				isOpen = !isOpen;
 			}}
-			label={isOpen ? 'Voir moins -' : m.about_see_more()}
+			label={isOpen ? m.about_see_less() : m.about_see_more()}
 		/>
 	</div>
 </div>

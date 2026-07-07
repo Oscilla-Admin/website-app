@@ -1,13 +1,15 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
-import { CONTACT_EMAIL } from '$env/static/private';
 
 /**
- * GET: Retourne l'email de contact (pour le mailto)
- * L'email est stocké côté serveur pour éviter le scraping par les bots
+ * GET: Retourne les informations de contact uniquement à la demande.
+ * Les valeurs restent côté serveur pour éviter le scraping direct dans le HTML.
  */
 export const GET: RequestHandler = async () => {
-	return json({ email: CONTACT_EMAIL });
+	return json({
+		email: 'contact@oscilla.fr',
+		phone: '0770176237'
+	});
 };
 
 /**

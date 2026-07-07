@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { COLORS } from '$lib/utils/colors';
-	import { onMount } from 'svelte';
-	import { getContactEmail } from '$lib/utils/contact';
+	import { getContactEmail, getContactPhone } from '$lib/utils/contact';
+	import Copy from 'lucide-svelte/icons/copy';
 	import * as m from '$paraglide/messages.js';
 	import { getLocale } from '$paraglide/runtime.js';
 
@@ -9,45 +9,148 @@
 	const locale = getLocale();
 
 	let contactEmail = $state('');
-	let isLoading = $state(true);
+	let contactPhone = $state('');
+	let isEmailLoading = $state(false);
+	let isPhoneLoading = $state(false);
 
-	onMount(async () => {
+	async function revealEmail() {
+		if (contactEmail || isEmailLoading) return;
+		isEmailLoading = true;
 		contactEmail = await getContactEmail();
-		isLoading = false;
-	});
+		isEmailLoading = false;
+	}
+
+	async function revealPhone() {
+		if (contactPhone || isPhoneLoading) return;
+		isPhoneLoading = true;
+		contactPhone = await getContactPhone();
+		isPhoneLoading = false;
+	}
 
 	function openMailto() {
 		if (contactEmail) {
 			window.location.href = `mailto:${contactEmail}?subject=Contact depuis le site Oscilla`;
 		}
 	}
+
+	function callPhone() {
+		if (contactPhone && window.matchMedia('(max-width: 767px)').matches) {
+			window.location.href = `tel:${contactPhone}`;
+		}
+	}
+
+	async function copyToClipboard(value: string) {
+		if (!value) return;
+		await navigator.clipboard.writeText(value);
+	}
 </script>
 
 <section
 	id="contact"
-	class="container mx-auto flex w-full scroll-mt-32 flex-col items-center justify-center gap-6 px-6 py-12 md:px-8 md:py-16"
+	class="container mx-auto flex w-full scroll-mt-32 flex-col items-center justify-center gap-5 px-6 py-12 md:gap-6 md:px-8 md:py-16"
 >
 	{#if showTitle}
 		<h2 class="mb-6 text-center text-3xl font-bold md:mb-8 md:text-4xl">
 			{siteContent.contact_title?.[locale] || m.contact_title()}
 		</h2>
 	{/if}
-	<p class="max-w-2xl text-center text-base md:text-lg">
+	<p class="w-full max-w-2xl text-center text-sm leading-relaxed break-words md:text-lg">
 		{siteContent.contact_description?.[locale] || m.contact_description()}
 	</p>
 
-	<button
-		onclick={openMailto}
-		disabled={!contactEmail}
-		class="rounded-md p-4 px-8 font-medium text-white transition-opacity hover:cursor-pointer hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
-		style="background-color: {COLORS.primary};"
-	>
-		{#if isLoading}
-			{m.contact_loading()}
-		{:else}
-			{m.contact_send_email()}
-		{/if}
-	</button>
+	<div class="flex w-full max-w-xl flex-col gap-6 md:gap-4">
+		<div
+			class="flex flex-col items-center gap-2 px-4 py-1 text-center md:flex-row md:justify-between md:gap-3 md:py-2 md:text-left"
+		>
+			<div class="flex flex-col items-center gap-1 md:items-start">
+				<button
+					onclick={revealEmail}
+					disabled={!!contactEmail || isEmailLoading}
+					class="w-fit font-roboto text-sm normal-case transition-opacity hover:cursor-pointer hover:opacity-80 disabled:cursor-default disabled:opacity-100 md:text-sm"
+					style="color: {COLORS.primary};"
+				>
+					{m.contact_email_label()}
+				</button>
+			</div>
+			{#if !contactEmail}
+				<button
+					onclick={revealEmail}
+					disabled={isEmailLoading}
+					class="flex min-h-10 w-full max-w-xs items-center justify-center rounded-md px-4 text-center text-sm font-medium transition-opacity hover:cursor-pointer hover:opacity-80 disabled:cursor-not-allowed disabled:opacity-50 md:h-12 md:w-72 md:max-w-none md:text-sm"
+					style="color: {COLORS.primary};"
+				>
+					{isEmailLoading ? m.contact_loading() : m.contact_reveal_email()}
+				</button>
+			{:else}
+				<div
+					class="flex w-full max-w-xs flex-col items-center justify-center gap-2 md:w-72 md:max-w-none md:flex-row"
+				>
+					<button
+						onclick={openMailto}
+						class="flex min-h-10 flex-1 items-center justify-center rounded-md px-4 text-center text-sm font-medium text-white transition-opacity hover:cursor-pointer hover:opacity-90 md:h-12"
+						style="background-color: {COLORS.primary};"
+					>
+						{contactEmail}
+					</button>
+					<button
+						onclick={() => copyToClipboard(contactEmail)}
+						aria-label="Copier l'email"
+						title="Copier l'email"
+						class="flex h-10 w-10 shrink-0 items-center justify-center rounded-md transition-opacity hover:cursor-pointer hover:opacity-80 md:h-12 md:w-12"
+						style="color: {COLORS.primary};"
+					>
+						<Copy size={18} strokeWidth={1.8} />
+					</button>
+				</div>
+			{/if}
+		</div>
+
+		<div
+			class="flex flex-col items-center gap-2 px-4 py-1 text-center md:flex-row md:justify-between md:gap-3 md:py-2 md:text-left"
+		>
+			<div class="flex flex-col items-center gap-1 md:items-start">
+				<button
+					onclick={revealPhone}
+					disabled={!!contactPhone || isPhoneLoading}
+					class="w-fit font-roboto text-sm normal-case transition-opacity hover:cursor-pointer hover:opacity-80 disabled:cursor-default disabled:opacity-100 md:text-sm"
+					style="color: {COLORS.primary};"
+				>
+					{m.contact_phone_label()}
+				</button>
+			</div>
+			{#if !contactPhone}
+				<button
+					onclick={revealPhone}
+					disabled={isPhoneLoading}
+					class="flex min-h-10 w-full max-w-xs items-center justify-center rounded-md px-4 text-center text-sm font-medium transition-opacity hover:cursor-pointer hover:opacity-80 disabled:cursor-not-allowed disabled:opacity-50 md:h-12 md:w-72 md:max-w-none md:text-sm"
+					style="color: {COLORS.primary};"
+				>
+					{isPhoneLoading ? m.contact_loading() : m.contact_reveal_phone()}
+				</button>
+			{:else}
+				<div
+					class="flex w-full max-w-xs flex-col items-center justify-center gap-2 md:w-72 md:max-w-none md:flex-row"
+				>
+					<button
+						onclick={callPhone}
+						class="flex min-h-10 flex-1 items-center justify-center rounded-md px-4 text-center text-sm font-medium transition-opacity hover:opacity-80 md:h-12 md:cursor-default"
+						style="color: {COLORS.primary};"
+					>
+						{contactPhone}
+					</button>
+					<button
+						onclick={() => copyToClipboard(contactPhone)}
+						aria-label="Copier le téléphone"
+						title="Copier le téléphone"
+						class="flex h-10 w-10 shrink-0 items-center justify-center rounded-md transition-opacity hover:cursor-pointer hover:opacity-80 md:h-12 md:w-12"
+						style="color: {COLORS.primary};"
+					>
+						<Copy size={18} strokeWidth={1.8} />
+					</button>
+				</div>
+			{/if}
+		</div>
+	</div>
 </section>
 
 <!--
