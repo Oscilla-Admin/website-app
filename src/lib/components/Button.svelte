@@ -20,6 +20,7 @@
 {#if href}
 	<a
 		{href}
+		onclick={onClick}
 		class="flex items-center justify-center rounded-md px-3 py-2 font-bold whitespace-nowrap transition-colors hover:cursor-pointer md:min-w-40 {classOverride}"
 		style="--hover-color: {COLORS.primary}; color: {active
 			? COLORS.primary

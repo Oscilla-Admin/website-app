@@ -6,12 +6,15 @@
 	import * as m from '$paraglide/messages.js';
 	import { COLORS } from '$lib/utils/colors';
 
-	let { technicalTools }: { technicalTools: TechnicalTool[] } = $props();
+	let {
+		technicalTools,
+		showTitle = true
+	}: { technicalTools: TechnicalTool[]; showTitle?: boolean } = $props();
 
 	const locale = getLocale();
 </script>
 
-<section id="outils-techniques" class="w-full scroll-mt-32 overflow-hidden py-24">
+<section id="outils-techniques" class="relative w-full scroll-mt-32 overflow-hidden py-24">
 	<div class="absolute inset-0 bg-[var(--bg-color)]" style="--bg-color: {COLORS.grayLight};"></div>
 	<!-- Dégradés de transition pour fond enchaîné -->
 	<div class="absolute top-0 left-0 h-32 w-full bg-gradient-to-b from-white to-transparent"></div>
@@ -22,7 +25,11 @@
 	<div
 		class="relative container mx-auto flex w-full flex-col items-center justify-center gap-4 px-4 md:px-8"
 	>
-		<h2 class="mb-6 text-center text-3xl font-bold md:mb-8 md:text-4xl">{m.technical_title()}</h2>
+		{#if showTitle}
+			<h2 class="mb-6 text-center text-3xl font-bold md:mb-8 md:text-4xl">
+				{m.technical_title()}
+			</h2>
+		{/if}
 		<Carousel items={technicalTools}>
 			{#snippet children(tool)}
 				<CarouselCard title={tool.title[locale]} iconName={tool.iconName} image={tool.image} />

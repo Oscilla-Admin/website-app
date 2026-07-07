@@ -44,7 +44,7 @@
 <div class="relative">
 	<button
 		onclick={toggleDropdown}
-		class="flex cursor-pointer items-center gap-2 rounded p-2 transition-colors {isTransparent
+		class="flex cursor-pointer items-center gap-1.5 rounded p-1.5 transition-colors {isTransparent
 			? 'bg-transparent hover:bg-white/10'
 			: 'hover:bg-gray-100'}"
 		style="color: {isTransparent ? COLORS.white : COLORS.black};"
@@ -54,9 +54,9 @@
 		<img
 			src={flags[currentLocale]}
 			alt={labels[currentLocale]}
-			class="h-7 w-10 rounded-sm border border-gray-100 object-cover shadow-sm"
+			class="h-5 w-8 rounded-sm border border-gray-100 object-cover shadow-sm"
 		/>
-		<ChevronDown size={20} class="opacity-50" />
+		<ChevronDown size={16} class="opacity-50" />
 	</button>
 
 	{#if isOpen}

@@ -1,11 +1,10 @@
 import { activities as staticActivities } from '$lib/data/activities';
 import { technicalTools as staticTechnicalTools } from '$lib/data/technicals_tools';
 import { projects as staticProjects } from '$lib/data/projects';
-import type { PageServerLoad } from './$types';
+import type { LayoutServerLoad } from './$types';
 
-export const load: PageServerLoad = async ({ fetch }) => {
+export const load: LayoutServerLoad = async ({ fetch }) => {
 	try {
-		// On appelle nos propres routes API SvelteKit au lieu de taper directement dans la DB
 		const [resActivities, resTools, resProjects, resContent, resNews] = await Promise.all([
 			fetch('/api/activities'),
 			fetch('/api/technical-tools'),

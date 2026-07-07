@@ -26,7 +26,7 @@
 <svelte:window onscroll={handleScroll} />
 
 <header
-	class="fixed top-0 left-0 z-[50] w-full py-2 transition-all duration-300 ease-out
+	class="fixed top-0 left-0 z-[50] w-full py-1 transition-all duration-300 ease-out
     {isTransparent ? 'bg-transparent' : 'bg-white'}
     {isScrolled ? 'shadow-sm' : ''}"
 >
@@ -34,9 +34,9 @@
 		<Logo
 			src="/tempLogo.png"
 			alt="Oscilla Logo"
-			href="/#accueil"
-			classOverride="mb-2 mr-2 xl:mr-5 xl:mb-12"
-			size="w-24 xl:w-40 h-auto xl:h-28"
+			href="/"
+			classOverride="mr-2 xl:mr-3 xl:mb-2"
+			size="w-20 xl:h-14 xl:w-24"
 		/>
 		<NavBar {isTransparent} />
 	</div>

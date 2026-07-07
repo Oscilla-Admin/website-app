@@ -5,7 +5,7 @@
 	import * as m from '$paraglide/messages.js';
 	import { getLocale } from '$paraglide/runtime.js';
 
-	let { siteContent = {} } = $props();
+	let { siteContent = {}, showTitle = true } = $props();
 	const locale = getLocale();
 
 	let contactEmail = $state('');
@@ -27,9 +27,11 @@
 	id="contact"
 	class="container mx-auto flex w-full scroll-mt-32 flex-col items-center justify-center gap-6 px-6 py-12 md:px-8 md:py-16"
 >
-	<h2 class="mb-6 text-center text-3xl font-bold md:mb-8 md:text-4xl">
-		{siteContent.contact_title?.[locale] || m.contact_title()}
-	</h2>
+	{#if showTitle}
+		<h2 class="mb-6 text-center text-3xl font-bold md:mb-8 md:text-4xl">
+			{siteContent.contact_title?.[locale] || m.contact_title()}
+		</h2>
+	{/if}
 	<p class="max-w-2xl text-center text-base md:text-lg">
 		{siteContent.contact_description?.[locale] || m.contact_description()}
 	</p>

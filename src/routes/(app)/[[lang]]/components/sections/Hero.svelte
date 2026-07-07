@@ -28,13 +28,13 @@
 	<div
 		class="relative z-10 flex h-full w-full flex-col items-center justify-center px-4 pt-10 pb-12 md:pt-28 md:pt-32 md:pb-16"
 	>
-		<h1 class="mr-6 flex w-full justify-center text-3xl font-black md:mr-17 md:mb-60 md:text-4xl">
+		<div class="mr-6 flex w-full justify-center text-3xl font-black md:mr-17 md:mb-60 md:text-4xl">
 			<Logo
 				src="/tempLogo.png"
 				alt="Oscilla Logo"
 				size="max-w-[220px] md:max-w-[800px] h-auto xl:mr-20"
 			/>
-		</h1>
+		</div>
 		<p
 			class="!text-justify-none relative z-20 -mt-12 mt-10 w-full !text-center text-center text-xl italic drop-shadow-lg md:-mt-24 md:max-w-none md:items-center md:pb-28 md:text-4xl"
 			style="color: {COLORS.white}; font-weight: 600 !important;"

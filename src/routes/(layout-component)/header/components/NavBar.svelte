@@ -11,97 +11,31 @@
 	import { onMount } from 'svelte';
 	import { getContactEmail } from '$lib/utils/contact';
 	import { COLORS } from '$lib/utils/colors';
+	import { page } from '$app/state';
+	import { getLocale } from '$paraglide/runtime.js';
 
 	let { isTransparent = false }: { isTransparent?: boolean } = $props();
+	const locale = getLocale();
+	const legalNoticesHref = `/${locale}/mentions-legales`;
 
 	let isMenuOpen = $state(false);
 	let contactEmail = $state('');
-	let activeSection = $state('accueil');
+	const navItems = $derived([
+		{ href: '/a-propos', id: 'a-propos', label: m.nav_about() },
+		{ href: '/activites-references', id: 'activites-references', label: m.nav_activities() },
+		{ href: '/outils-techniques', id: 'outils-techniques', label: m.nav_technical() },
+		{ href: '/contact', id: 'contact', label: m.nav_contact() }
+	]);
+	const activeRoute = $derived(
+		page.url.pathname.replace(/^\/(fr|en|ca)(?=\/|$)/, '') || '/a-propos'
+	);
 
 	onMount(() => {
-		let observer: IntersectionObserver;
-
 		const init = async () => {
 			contactEmail = await getContactEmail();
-
-			const observerOptions = {
-				root: null,
-				rootMargin: '-25% 0px -25% 0px', // Zone de détection plus large (50% du centre)
-				threshold: [0, 0.1, 0.5]
-			};
-
-			const observerCallback = (entries: IntersectionObserverEntry[]) => {
-				// On filtre pour ne garder que les éléments qui entrent dans la zone
-				const visibleEntries = entries.filter((e) => e.isIntersecting);
-
-				if (visibleEntries.length > 0) {
-					// On trie par ratio de visibilité pour prendre le plus présent
-					const bestEntry = visibleEntries.sort(
-						(a, b) => b.intersectionRatio - a.intersectionRatio
-					)[0];
-					const id = bestEntry.target.id;
-
-					const navIds = [
-						'accueil',
-						'a-propos',
-						'activites-references',
-						'outils-techniques',
-						'contact'
-					];
-					if (navIds.includes(id)) {
-						activeSection = id;
-					} else if (id === 'actualites') {
-						activeSection = 'a-propos';
-					}
-				}
-
-				// Sécurités basées sur la position absolue du scroll
-				const scrollY = window.scrollY;
-				const windowHeight = window.innerHeight;
-				const bodyHeight = document.documentElement.scrollHeight;
-
-				if (scrollY < 100) {
-					activeSection = 'accueil';
-				} else if (scrollY + windowHeight > bodyHeight - 100) {
-					activeSection = 'contact';
-				}
-			};
-
-			observer = new IntersectionObserver(observerCallback, observerOptions);
-
-			const sections = [
-				'accueil',
-				'a-propos',
-				'actualites',
-				'activites-references',
-				'outils-techniques',
-				'contact'
-			];
-
-			const refreshObserver = () => {
-				sections.forEach((id) => {
-					const el = document.getElementById(id);
-					if (el) {
-						observer.unobserve(el);
-						observer.observe(el);
-					}
-				});
-			};
-
-			// On rafraîchit l'observation au montage et après chaque navigation
-			refreshObserver();
-
-			// On utilise un intervalle court au début pour être sûr de capter le rendu Svelte
-			const interval = setInterval(refreshObserver, 1000);
-			return () => clearInterval(interval);
 		};
 
-		const cleanupInit = init();
-
-		return () => {
-			if (observer) observer.disconnect();
-			cleanupInit.then((cleanup) => cleanup && cleanup());
-		};
+		init();
 	});
 
 	function openMailto() {
@@ -126,40 +60,18 @@
 <div class="flex w-full flex-row items-center justify-end gap-2 xl:gap-4">
 	<!-- Desktop Navigation -->
 	<nav
-		class="absolute top-1/2 left-1/2 hidden h-10 -translate-x-1/2 -translate-y-1/2 flex-row items-center justify-center gap-3 lg:flex xl:gap-8"
+		class="absolute top-1/2 left-1/2 hidden h-8 -translate-x-1/2 -translate-y-1/2 flex-row items-center justify-center gap-2 lg:flex xl:gap-5"
 	>
-		<Button
-			href="/#a-propos"
-			label={m.nav_about()}
-			onClick={handleNavClick}
-			active={activeSection === 'a-propos'}
-			{isTransparent}
-			classOverride="!text-sm xl:!text-lg !font-black !min-w-fit xl:!min-w-[132px] !px-2 xl:!px-3 !py-1"
-		/>
-		<Button
-			href="/#activites-references"
-			label={m.nav_activities()}
-			onClick={handleNavClick}
-			active={activeSection === 'activites-references'}
-			{isTransparent}
-			classOverride="!text-sm xl:!text-lg !font-black !min-w-fit xl:!min-w-[132px] !px-2 xl:!px-3 !py-1"
-		/>
-		<Button
-			href="/#outils-techniques"
-			label={m.nav_technical()}
-			onClick={handleNavClick}
-			active={activeSection === 'outils-techniques'}
-			{isTransparent}
-			classOverride="!text-sm xl:!text-lg !font-black !min-w-fit xl:!min-w-[132px] !px-2 xl:!px-3 !py-1"
-		/>
-		<Button
-			href="/#contact"
-			label={m.nav_contact()}
-			onClick={handleNavClick}
-			active={activeSection === 'contact'}
-			{isTransparent}
-			classOverride="!text-sm xl:!text-lg !font-black !min-w-fit xl:!min-w-[132px] !px-2 xl:!px-3 !py-1"
-		/>
+		{#each navItems as item}
+			<Button
+				href={item.href}
+				label={item.label}
+				onClick={handleNavClick}
+				active={activeRoute === item.href || (activeRoute === '/' && item.id === 'a-propos')}
+				{isTransparent}
+				classOverride="!text-xs xl:!text-sm !font-black !min-w-fit xl:!min-w-[96px] !px-1.5 xl:!px-2 !py-1"
+			/>
+		{/each}
 	</nav>
 
 	<!-- Desktop Actions -->
@@ -168,12 +80,12 @@
 		style="color: {isTransparent ? COLORS.white : COLORS.black};"
 	>
 		<LanguageSelector {isTransparent} />
-		<LinkIcon onclick={openMailto} icon={Mail} {isTransparent} size={24} />
+		<LinkIcon onclick={openMailto} icon={Mail} {isTransparent} size={20} />
 		<LinkIcon
 			href="https://linkedin.com/company/oscilla-acoustique"
 			icon={Linkedin}
 			{isTransparent}
-			size={24}
+			size={20}
 		/>
 	</div>
 
@@ -210,44 +122,31 @@
 		transition:fly={{ x: 256, duration: 300 }}
 	>
 		<nav class="flex flex-col items-start gap-6">
-			<a
-				href="/#a-propos"
-				onclick={handleNavClick}
-				class="hover:text-primary flex w-full justify-start text-left text-lg font-medium transition-colors"
-				style="text-align: left; text-justify: none; color: {activeSection === 'a-propos'
-					? COLORS.primary
-					: ''}">{m.nav_about()}</a
-			>
-			<a
-				href="/#activites-references"
-				onclick={handleNavClick}
-				class="hover:text-primary flex w-full justify-start text-left text-lg font-medium transition-colors"
-				style="text-align: left; text-justify: none; color: {activeSection ===
-				'activites-references'
-					? COLORS.primary
-					: ''}">{m.nav_activities()}</a
-			>
-			<a
-				href="/#outils-techniques"
-				onclick={handleNavClick}
-				class="hover:text-primary flex w-full justify-start text-left text-lg font-medium transition-colors"
-				style="text-align: left; text-justify: none; color: {activeSection === 'outils-techniques'
-					? COLORS.primary
-					: ''}">{m.nav_technical()}</a
-			>
-			<a
-				href="/#contact"
-				onclick={handleNavClick}
-				class="hover:text-primary flex w-full justify-start text-left text-lg font-medium transition-colors"
-				style="text-align: left; text-justify: none; color: {activeSection === 'contact'
-					? COLORS.primary
-					: ''}">{m.nav_contact()}</a
-			>
+			{#each navItems as item}
+				<a
+					href={item.href}
+					onclick={handleNavClick}
+					class="hover:text-primary flex w-full justify-start text-left text-lg font-medium transition-colors"
+					style="text-align: left; text-justify: none; color: {activeRoute === item.href ||
+					(activeRoute === '/' && item.id === 'a-propos')
+						? COLORS.primary
+						: ''}">{item.label}</a
+				>
+			{/each}
 		</nav>
 
-		<div class="mt-auto flex flex-row items-center gap-4 border-t pt-6">
-			<LinkIcon onclick={openMailto} icon={Mail} />
-			<LinkIcon href="https://linkedin.com/company/oscilla-acoustique" icon={Linkedin} />
+		<div class="mt-auto flex flex-col items-start gap-3">
+			<a
+				href={legalNoticesHref}
+				onclick={handleNavClick}
+				class="font-roboto text-xs text-gray-500 normal-case transition-colors hover:text-gray-900"
+			>
+				{m.footer_legal_notices()}
+			</a>
+			<div class="flex w-full flex-row items-center gap-4 border-t pt-6">
+				<LinkIcon onclick={openMailto} icon={Mail} />
+				<LinkIcon href="https://linkedin.com/company/oscilla-acoustique" icon={Linkedin} />
+			</div>
 		</div>
 	</div>
 {/if}

@@ -6,7 +6,7 @@
 	import * as m from '$paraglide/messages.js';
 	import { page } from '$app/state';
 
-	let { activities }: { activities: Activity[] } = $props();
+	let { activities, showTitle = true }: { activities: Activity[]; showTitle?: boolean } = $props();
 	const initialActivityId = $derived(page.url.searchParams.get('activity'));
 
 	const locale = getLocale();
@@ -16,7 +16,9 @@
 	id="activites-references"
 	class="container mx-auto flex w-full scroll-mt-32 flex-col items-center justify-center gap-4 px-4 py-12 md:px-8 md:py-16"
 >
-	<h2 class="mb-6 text-center text-3xl font-bold md:mb-8 md:text-4xl">{m.activities_title()}</h2>
+	{#if showTitle}
+		<h2 class="mb-6 text-center text-3xl font-bold md:mb-8 md:text-4xl">{m.activities_title()}</h2>
+	{/if}
 	<Carousel items={activities} initialItemId={initialActivityId}>
 		{#snippet children(activity)}
 			<CarouselCard

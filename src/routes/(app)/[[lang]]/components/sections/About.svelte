@@ -4,7 +4,7 @@
 	import { slide } from 'svelte/transition';
 	import { getLocale } from '$paraglide/runtime.js';
 
-	let { siteContent = {} } = $props();
+	let { siteContent = {}, showTitle = true } = $props();
 	const locale = getLocale();
 
 	let isOpen = $state(false);
@@ -14,9 +14,11 @@
 	id="a-propos"
 	class="container mx-auto flex w-full scroll-mt-32 flex-col items-center justify-center gap-4 overflow-hidden px-4 py-12 md:px-8 md:py-16"
 >
-	<h2 class="mb-6 w-full text-center text-3xl font-bold md:mb-8 md:text-4xl">
-		{m.about_title()}
-	</h2>
+	{#if showTitle}
+		<h2 class="mb-6 w-full text-center text-3xl font-bold md:mb-8 md:text-4xl">
+			{m.about_title()}
+		</h2>
+	{/if}
 	<div class="w-full max-w-3xl">
 		<p class="mb-4 text-center font-roboto text-base md:text-lg">
 			{siteContent.about_description?.[locale] || m.about_description()}
