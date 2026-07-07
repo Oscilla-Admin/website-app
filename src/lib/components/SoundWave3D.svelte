@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import { drawSoundWave, type WaveOptions } from '$lib/utils/waves';
 
+	let { class: className = '' }: { class?: string } = $props();
 	let canvas: HTMLCanvasElement; // Plus de $state ici pour éviter les conflits au build
 	let scrollY = $state(0);
 	let currentIntensity = $state(0);
@@ -69,7 +70,7 @@
 <svelte:window bind:scrollY />
 
 <div
-	class="flex h-48 w-full items-center justify-center overflow-hidden opacity-70 transition-opacity duration-500"
+	class="flex h-48 w-full items-center justify-center overflow-hidden opacity-70 transition-opacity duration-500 {className}"
 >
 	<canvas bind:this={canvas} class="h-full w-full"></canvas>
 </div>

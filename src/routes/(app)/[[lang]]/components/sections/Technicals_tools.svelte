@@ -14,7 +14,7 @@
 	const locale = getLocale();
 </script>
 
-<section id="outils-techniques" class="relative w-full scroll-mt-32 overflow-hidden py-24">
+<section id="outils-techniques" class="relative w-full scroll-mt-32 overflow-hidden py-10 md:py-24">
 	<div class="absolute inset-0 bg-[var(--bg-color)]" style="--bg-color: {COLORS.grayLight};"></div>
 	<!-- Dégradés de transition pour fond enchaîné -->
 	<div class="absolute top-0 left-0 h-32 w-full bg-gradient-to-b from-white to-transparent"></div>
@@ -38,7 +38,7 @@
 				<div class="flex min-h-0 flex-1 flex-col gap-6">
 					{#if tool.image}
 						<div
-							class="flex h-64 w-full shrink-0 items-center justify-center overflow-hidden rounded-xl md:mx-auto md:h-80 md:w-1/2"
+							class="flex h-36 w-full shrink-0 items-center justify-center overflow-hidden rounded-xl sm:h-44 md:mx-auto md:h-80 md:w-1/2"
 						>
 							<img
 								src={tool.image}
@@ -51,7 +51,7 @@
 						<div class="min-h-0 w-full flex-1 overflow-y-auto">
 							<div class="flex min-h-full flex-col justify-center">
 								<p
-									class="text-center font-roboto leading-relaxed whitespace-pre-wrap text-gray-600 md:text-lg"
+									class="text-center font-roboto text-sm leading-relaxed whitespace-pre-wrap text-gray-600 md:text-lg"
 								>
 									{tool.description[locale]}
 								</p>

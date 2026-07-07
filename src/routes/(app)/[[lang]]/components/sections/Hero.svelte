@@ -43,6 +43,6 @@
 		</p>
 	</div>
 	<div
-		class="pointer-events-none absolute inset-x-0 bottom-0 z-[6] h-36 bg-gradient-to-b from-transparent via-black/45 via-65% to-white md:h-60"
+		class="pointer-events-none absolute inset-x-0 bottom-0 z-[6] h-20 bg-gradient-to-b from-transparent via-[#f7f8f7]/20 via-70% to-[#f7f8f7] md:h-32"
 	></div>
 </div>

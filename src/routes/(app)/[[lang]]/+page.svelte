@@ -20,7 +20,7 @@
 
 <div class="flex flex-col items-center justify-center">
 	<Hero siteContent={data.siteContent} />
-	<PageShell title={m.about_title()}>
+	<PageShell title={m.about_title()} afterHero>
 		<About siteContent={data.siteContent} showTitle={false} />
 	</PageShell>
 </div>

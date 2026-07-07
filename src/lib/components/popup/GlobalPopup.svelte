@@ -26,7 +26,7 @@
 
 {#if $popupStore.isOpen}
 	<div
-		class="fixed inset-0 z-[10000] flex items-center justify-center bg-black/70 p-6 backdrop-blur-md md:p-4"
+		class="fixed inset-0 z-[10000] flex items-center justify-center bg-black/70 p-4 backdrop-blur-md md:p-4"
 		onclick={closePopup}
 		role="button"
 		tabindex="0"
@@ -36,7 +36,7 @@
 		transition:fade={{ duration: 600 }}
 	>
 		<div
-			class="relative z-[10001] flex h-[80vh] w-full max-w-[95%] cursor-default flex-col rounded-2xl bg-white p-6 shadow-2xl md:max-w-[85vw] md:p-10 lg:max-w-[1200px]"
+			class="relative z-[10001] flex max-h-[calc(100dvh-2rem)] w-full max-w-[95%] cursor-default flex-col rounded-2xl bg-white p-5 shadow-2xl md:h-[80vh] md:max-w-[85vw] md:p-10 lg:max-w-[1200px]"
 			onclick={(e) => e.stopPropagation()}
 			role="dialog"
 			aria-modal="true"
@@ -45,8 +45,8 @@
 			in:scale={{ duration: 600, start: 0.94, opacity: 0, easing: cubicOut }}
 			out:scale={{ duration: 450, start: 0.96, opacity: 0, easing: cubicOut }}
 		>
-			<div class="mb-6 flex shrink-0 items-start justify-between md:mb-8">
-				<h2 class="text-2xl leading-tight font-black text-gray-900 md:text-4xl">
+			<div class="mb-4 flex shrink-0 items-start justify-between md:mb-8">
+				<h2 class="text-xl leading-tight font-black text-gray-900 md:text-4xl">
 					{typeof $popupStore.title === 'string'
 						? $popupStore.title
 						: $popupStore.title?.[locale] || 'Détails'}
@@ -58,7 +58,7 @@
 				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
-						class="h-8 w-8 md:h-10 md:w-10"
+						class="h-7 w-7 md:h-10 md:w-10"
 						fill="none"
 						viewBox="0 0 24 24"
 						stroke="currentColor"
@@ -73,7 +73,7 @@
 				</button>
 			</div>
 
-			<div class="flex min-h-0 flex-1 flex-col overflow-hidden">
+			<div class="flex min-h-0 flex-1 flex-col overflow-y-auto md:overflow-hidden">
 				{#if $popupStore.content && $popupStore.data}
 					{@render $popupStore.content($popupStore.data)}
 				{/if}

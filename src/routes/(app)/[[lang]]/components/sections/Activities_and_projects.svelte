@@ -31,7 +31,7 @@
 			<div class="flex min-h-0 flex-1 flex-col gap-6">
 				{#if activity.image}
 					<div
-						class="flex h-64 w-full shrink-0 items-center justify-center overflow-hidden rounded-xl md:mx-auto md:h-80 md:w-1/2"
+						class="flex h-36 w-full shrink-0 items-center justify-center overflow-hidden rounded-xl sm:h-44 md:mx-auto md:h-80 md:w-1/2"
 					>
 						<img
 							src={activity.image}
@@ -42,11 +42,11 @@
 				{/if}
 				<div class="flex min-h-0 flex-1 flex-col justify-start md:items-center">
 					{#if activity.subtitle?.[locale]}
-						<h3 class="mb-4 shrink-0 text-xl font-bold md:text-2xl">{activity.subtitle[locale]}</h3>
+						<h3 class="mb-3 shrink-0 text-lg font-bold md:mb-4 md:text-2xl">{activity.subtitle[locale]}</h3>
 					{/if}
 					<div class="min-h-0 w-full flex-1 overflow-y-auto">
 						<p
-							class="font-roboto text-base leading-relaxed whitespace-pre-wrap text-gray-600 md:text-lg"
+							class="font-roboto text-sm leading-relaxed whitespace-pre-wrap text-gray-600 md:text-lg"
 						>
 							{activity.description[locale]}
 						</p>
