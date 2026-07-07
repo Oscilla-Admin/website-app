@@ -37,6 +37,13 @@
 			openPopup(item.title || item.name || 'Détails', popupContent, item);
 		}
 	};
+
+	const handleCardKeydown = (event: KeyboardEvent, item: any) => {
+		if (event.key === 'Enter' || event.key === ' ') {
+			event.preventDefault();
+			handlePopup(item);
+		}
+	};
 </script>
 
 <div class="group relative w-full">
@@ -66,15 +73,17 @@
 	>
 		{#each items as item}
 			{#if popupContent}
-				<button
+				<div
 					class="w-[85%] flex-none snap-start text-left hover:cursor-pointer md:w-[45%] lg:w-[30%]"
 					onclick={() => {
 						handlePopup(item);
 					}}
-					type="button"
+					onkeydown={(event) => handleCardKeydown(event, item)}
+					role="button"
+					tabindex="0"
 				>
 					{@render children(item)}
-				</button>
+				</div>
 			{:else}
 				<div class="w-[85%] flex-none snap-start md:w-[45%] lg:w-[30%]">
 					{@render children(item)}

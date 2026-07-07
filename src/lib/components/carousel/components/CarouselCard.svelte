@@ -85,8 +85,12 @@
 	<a {href} {onclick} class="{cardClass} cursor-pointer no-underline">
 		{@render cardContent()}
 	</a>
-{:else}
+{:else if onclick}
 	<button type="button" {onclick} class="{cardClass} w-full text-left">
 		{@render cardContent()}
 	</button>
+{:else}
+	<div class={cardClass}>
+		{@render cardContent()}
+	</div>
 {/if}
